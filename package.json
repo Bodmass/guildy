@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p $PORT",
     "prettier": "prettier --ignore-path .gitignore --write .",
     "lint": "eslint -c .eslintrc.js --ext .tsx,.ts pages",
     "get-screenshots": "ts-node-script scripts/get-screenshots"
