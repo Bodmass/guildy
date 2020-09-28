@@ -1,3 +1,3 @@
 export default function Index() {
-  return <div>Page</div>;
+  return <div>This is where Guildy will be!</div>;
 }
