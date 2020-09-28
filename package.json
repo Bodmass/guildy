@@ -1,8 +1,19 @@
 {
-  "name": "betrayal-game",
+  "name": "guildy",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Matthew Elphick <matt.a.elphy@gmail.com> (https://mael.tech)",
+  "author": "Aziz Arar <aziz.n.arar@gmail.com> (https://bodmass.github.io)",
+  "contributors": [
+    {
+      "name": "Ben Wilson",
+      "email": "benw8989@gmail.com"
+    },
+    {
+      "name": "Matthew Elphick",
+      "email": "matt.a.elphy@gmail.com",
+      "url": "https://mael.tech"
+    }
+  ],
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
@@ -22,7 +33,9 @@
     "*.{js,jsx,tsx,ts}": [
       "yarn prettier",
       "yarn lint --fix"
-    ]
+    ],
+    "*.{tsx,ts}": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
   },
   "dependencies": {
     "fathom-client": "^3.0.0",
