@@ -1,6 +1,6 @@
-const title = "Matt Elphick | Software Engineer";
-const description = "Software engineer mainly messing around with JavaScript.";
-const url = "https://mael.tech/";
+const title = 'Guildy'
+const description = 'World of Warcraft Guild Calendar and Management Tool!'
+const url = 'https://guildywow.herokuapp.com/'
 
 module.exports = {
   title,
@@ -11,12 +11,12 @@ module.exports = {
     description,
     url,
     site_name: title,
-    type: "website",
-    locale: "en_GB",
+    type: 'website',
+    locale: 'en_GB',
   },
   twitter: {
-    handle: "@mattaelphick",
-    site: "@mattaelphick",
-    cardType: "summary_large_image",
+    handle: '@bodmassad',
+    site: '@bodmassad',
+    cardType: 'summary_large_image',
   },
-};
+}
