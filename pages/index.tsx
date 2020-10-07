@@ -1,3 +1,11 @@
+import Footer from '../components/Footer'
+import Header from '../components/Header'
+
 export default function Index() {
-  return <div>This is where Guildy will be!</div>;
+  return (
+    <div>
+      <Header />
+      <Footer />
+    </div>
+  )
 }
