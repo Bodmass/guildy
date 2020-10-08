@@ -23,7 +23,6 @@
 
 body {
   background-color: var(--color-background);
-  background: no-repeat center/cover url('../images/backgrounds/maw1.jpg');
   color: var(--color-text);
   transition: background-color 0.3s ease, color 0.3s ease;
   font-family: 'Calibri', sans-serif;
