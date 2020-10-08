@@ -2,7 +2,19 @@ import { useMemo } from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 
-const bgArray = ['maw1.jpg', 'ardenweald1.jpg', 'bastion1.jpg', 'maldraxxus1.jpg', 'revendreth1.jpg']
+const bgArray = [
+  'maw1.jpg',
+  'maw2.jpg',
+  'ardenweald1.jpg',
+  'bastion1.jpg',
+  'bastion2.jpg',
+  'maldraxxus1.jpg',
+  'maldraxxus2.jpg',
+  'revendreth1.jpg',
+  'revendreth2.jpg',
+  'venari.jpg',
+]
+
 export default function Index() {
   const background = useMemo(() => {
     return bgArray[Math.floor(Math.random() * bgArray.length)]
