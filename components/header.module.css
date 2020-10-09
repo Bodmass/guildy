@@ -11,14 +11,29 @@
   user-select: none;
 }
 
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.caret {
+  font-size: 1.5rem;
+}
+
 .profile {
   border-left: 0.1rem solid white;
   border-right: 0.1rem solid white;
+  justify-content: space-between;
   display: flex;
-  font-size: 100%;
+  font-size: 1.5rem;
   align-items: center;
   width: 20rem;
   height: 4rem;
+}
+
+.profilename {
+  font-size: clamp(1rem, 3vw, 2rem);
+  flex: 0 0 15rem;
 }
 
 .profile:hover {
@@ -39,9 +54,10 @@
   align-items: center;
 }
 .button {
+  padding: 0.9rem 0;
   justify-self: right;
   border-left: 0.1rem solid rgb(255, 255, 255);
-  font-size: 3rem;
+  font-size: 2rem;
   background-color: black;
   text-align: center;
   width: 4rem;
