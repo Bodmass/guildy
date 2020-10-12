@@ -15,6 +15,55 @@ function ToggleButton({ icon, children }) {
   )
 }
 
+function SettingModal() {
+  function SettingModalItem({ children }: any) {
+    return (
+      <a href="#'" className={styles.menuitem}>
+        {children}
+      </a>
+    )
+  }
+  return (
+    <div className={styles.settingmodal}>
+      <div className={styles.settingmodalheader} />
+      <div className={styles.settingmodalnav}>
+        <SettingModalItem>General</SettingModalItem>
+        <SettingModalItem>Delete Account</SettingModalItem>
+        <SettingModalItem>Logout</SettingModalItem>
+      </div>
+      <div className={styles.settingmodalfill} />
+    </div>
+  )
+}
+
+function DropdownMenu() {
+  function DropdownItem({ rightIcon, children }: any) {
+    return (
+      <a href="#'" className={styles.menuitem}>
+        {children}
+        <span className="icon-right">{rightIcon}</span>
+      </a>
+    )
+  }
+
+  return (
+    <div className={styles.dropdown}>
+      <DropdownItem>
+        <div className={styles.profileimage} />
+        CHARACTER NAME
+      </DropdownItem>
+      <DropdownItem leftIcon={<FaBell />} rightIcon={<FaCaretDown />}>
+        {' '}
+        My Characters{' '}
+      </DropdownItem>
+      <DropdownItem>
+        <div className={styles.profileimage} />
+        GUILD NAME
+      </DropdownItem>
+    </div>
+  )
+}
+
 const Header = () => {
   return (
     <div>
@@ -22,7 +71,9 @@ const Header = () => {
 
       <div className={styles.header}>
         <div className={styles.toggleMobile}>
-          <ToggleButton icon={<FaBars />}>pls notice me</ToggleButton>
+          <ToggleButton icon={<FaBars />}>
+            <DropdownMenu />
+          </ToggleButton>
         </div>
         <div className={styles.togglePC}>
           <div className={styles.profile}>
@@ -45,7 +96,9 @@ const Header = () => {
           <div className={styles.button}>
             <FaBell />
           </div>
-          <ToggleButton icon={<FaCog />}>SETTING MODAL</ToggleButton>
+          <ToggleButton icon={<FaCog />}>
+            <SettingModal />
+          </ToggleButton>
         </div>
       </div>
     </div>

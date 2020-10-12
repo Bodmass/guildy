@@ -11,6 +11,35 @@
   user-select: none;
 }
 
+.dropdown {
+  position: absolute;
+  left: 0;
+  top: 4rem;
+  width: 20rem;
+  height: auto;
+  background-color: black;
+  border: var(--border);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.menuitem {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-radius: var(--border-radius);
+  transition: background var(--speed);
+  padding: 2.5rem 0.5rem;
+  font-size: 1.5rem;
+  justify-content: space-between;
+  border-bottom: 0.1rem solid white;
+}
+
+.menuitem:hover {
+  background: linear-gradient(black, rgb(53, 53, 53));
+}
+
 .togglePC {
   display: inherit;
 }
@@ -59,7 +88,7 @@
 
 .profileimage {
   background: url('https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg') no-repeat center;
-  border-right: 1px inset white;
+  /* background-image: var(--background-image) no-repeat center; */
   margin-right: 0.5rem;
   flex: 0 0 4rem;
   width: 100%;
@@ -82,4 +111,45 @@
 
 .button:hover {
   background: linear-gradient(black, rgb(53, 53, 53));
+}
+
+.settingmodal {
+  position: absolute;
+  display: flex;
+  align-content: center;
+  left: 50%;
+  top: -4vh;
+  transform: translate(-50%, 20%);
+  width: clamp(25rem, 50vw, 50rem);
+  height: 75vh;
+  border: 0.15rem solid white;
+  background: rgb(0, 0, 0);
+}
+
+.settingmodalnav {
+  position: absolute;
+  top: 5%;
+  left: 0;
+  width: 30%;
+  height: 95%;
+  border-right: 0.15rem solid white;
+}
+
+.settingmodalheader {
+  display: flex;
+  align-content: center;
+  width: 100%;
+  height: 5%;
+  background: black;
+  border-bottom: 0.15rem solid white;
+}
+
+.settingmodalfill {
+  position: absolute;
+  align-content: center;
+  width: 70%;
+  height: 95%;
+  top: 5%;
+  left: 30%;
+  background: black;
 }
