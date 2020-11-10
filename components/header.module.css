@@ -62,10 +62,6 @@
   align-items: center;
 }
 
-.caret {
-  font-size: 1.5rem;
-}
-
 .profile {
   border-left: 0.1rem solid white;
   border-right: 0.1rem solid white;
@@ -78,8 +74,15 @@
 }
 
 .profilename {
-  font-size: clamp(1rem, 3vw, 2rem);
+  font-size: clamp(0.8rem, 3vw, 1.8rem);
   flex: 0 0 15rem;
+  height: 2rem;
+}
+
+.profilesub {
+  font-size: clamp(0.2rem, 3vw, 1.2rem);
+  flex: 0 0 15rem;
+  height: 2rem;
 }
 
 .profile:hover {
@@ -100,8 +103,8 @@
   align-items: center;
 }
 .button {
-  padding: 0.9rem 0;
-  justify-self: right;
+  padding: 0.5rem 0;
+  justify-content: center;
   font-size: 2rem;
   background-color: black;
   text-align: center;
@@ -152,4 +155,9 @@
   top: 5%;
   left: 30%;
   background: black;
+}
+
+.profilenames {
+  height: 4rem;
+  width: 256px;
 }
