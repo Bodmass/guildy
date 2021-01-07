@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect } from 'react'
-import { FaBell, FaCog, FaBars } from 'react-icons/fa'
+import { useState, useRef, useEffect, useMemo } from 'react'
+import { FaBell, FaCog } from 'react-icons/fa'
 import Button from '@material-ui/core/Button'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import Popover from '@material-ui/core/Popover'
@@ -12,10 +12,13 @@ const NotificationItem = withStyles({
   root: {
     borderRadius: 3,
     border: 0,
-    height: 48,
+    lineHeight: '1.5',
+    letterSpacing: '1px',
+    margin: '0, 6px',
+    marginBottom: '6px',
     fontSize: '1rem',
-    padding: '0 30px',
-    boxShadow: '0 3px 5px 2px rgba(0, 0, 0, .3)',
+    boxShadow: '0 3px 5px 2px rgba(0, 0, 0, 0.5)',
+    whiteSpace: 'normal',
   },
   label: {
     textTransform: 'capitalize',
@@ -37,8 +40,15 @@ function ToggleButton({ icon, children }) {
   )
 }
 
+const ALL_NOTIFICATIONS = ['My', 'Name', 'Is', 'Aziz', 'Ben', 'is', 'cute']
+
+function populateNotificiations() {
+  // for now does nothing, however this should grab from a database.
+}
+
 function Notifications() {
   const [open, setOpen] = useState(false)
+  const [test, setTest] = useState(-1)
   const anchorRef = useRef<HTMLButtonElement>(null)
 
   const handleToggle = () => {
@@ -70,12 +80,15 @@ function Notifications() {
     prevOpen.current = open
   }, [open])
 
+  useMemo(() => {}, [test])
+
   return (
     <div>
       <div>
-        <Button ref={anchorRef} onClick={handleToggle} style={{ color: 'white' }}>
+        <Button ref={anchorRef} onClick={handleToggle} style={{ color: 'white' }} draggable={false}>
           <ToggleButton icon={<FaBell />}> </ToggleButton>
         </Button>
+
         <Popover
           anchorOrigin={{
             vertical: 'bottom',
@@ -90,6 +103,7 @@ function Notifications() {
               maxHeight: ITEM_HEIGHT * 5,
               minHeight: ITEM_HEIGHT * 5,
               width: '300px',
+              padding: '6px 6px',
               marginTop: '0.7rem',
             },
           }}
@@ -100,19 +114,34 @@ function Notifications() {
         >
           <ClickAwayListener onClickAway={handleClose}>
             <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-              <NotificationItem onClick={handleClose}>
-                You have been invited to Castle Nathria (Normal)!
-              </NotificationItem>
-              <NotificationItem onClick={handleClose}>
-                You have been set as Substitute for Castle Nathria (Mythic)!
-              </NotificationItem>
-              <NotificationItem onClick={handleClose}>Test Notifications</NotificationItem>
-              <NotificationItem onClick={handleClose}>Test Notifications</NotificationItem>
-              <NotificationItem onClick={handleClose}>Test Notifications</NotificationItem>
-              <NotificationItem onClick={handleClose}>Test Notifications</NotificationItem>
-              <NotificationItem onClick={handleClose}>Test Notifications</NotificationItem>
-              <NotificationItem onClick={handleClose}>Test Notifications</NotificationItem>
-              <NotificationItem onClick={handleClose}>Test Notifications</NotificationItem>
+              <div style={{ display: ALL_NOTIFICATIONS.length === 0 ? 'flex' : 'none' }}>No new notifications</div>
+              <>
+                {ALL_NOTIFICATIONS.map((name, index) => (
+                  <>
+                    <NotificationItem>
+                      {name}
+                      <Button
+                        style={{
+                          position: 'absolute',
+                          right: 0,
+                          top: 0,
+                          minWidth: 16,
+                          width: 16,
+                          height: 16,
+                          fontWeight: 'bold',
+                          border: '1px solid black',
+                        }}
+                        onClick={() => {
+                          ALL_NOTIFICATIONS.splice(index, 1)
+                          setTest(ALL_NOTIFICATIONS.length)
+                        }}
+                      >
+                        X
+                      </Button>
+                    </NotificationItem>
+                  </>
+                ))}
+              </>
             </MenuList>
           </ClickAwayListener>
         </Popover>
@@ -176,6 +205,9 @@ function SettingsPopover() {
         >
           <ClickAwayListener onClickAway={handleClose}>
             <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
+              <div className={styles.toggleMobile}>
+                <MenuItem>Character Name</MenuItem>
+              </div>
               <MenuItem onClick={handleClose}>Change Character</MenuItem>
               <MenuItem onClick={handleClose}>Manage Guild</MenuItem>
               <MenuItem onClick={handleClose}>Settings</MenuItem>
@@ -189,14 +221,13 @@ function SettingsPopover() {
 }
 
 const Header = () => {
+  populateNotificiations()
   return (
     <div>
       {/* PC View */}
 
       <div className={styles.header}>
-        <div className={styles.toggleMobile}>
-          <ToggleButton icon={<FaBars />}> a</ToggleButton>
-        </div>
+        <div className={styles.toggleMobile} />
         <div className={styles.togglePC}>
           <div className={styles.profile}>
             <div className={styles.flex}>
