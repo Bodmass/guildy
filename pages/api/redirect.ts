@@ -13,7 +13,7 @@ const handler: NextApiHandler = async (req, res) => {
   console.log(req.body)
   const result = await fetch(
     `https://${req.query.state}.battle.net/oauth/token?${stringify({
-      redirect_uri: `http://localhost:3000/api/redirect`,
+      redirect_uri: `${process.env.NEXT_PUBLIC_URL}/api/redirect`,
       scope: 'wow.profile',
       grant_type: 'authorization_code',
       code: req.query.code,

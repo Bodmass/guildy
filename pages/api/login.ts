@@ -4,7 +4,7 @@ import { stringify } from 'querystring'
 const handler: NextApiHandler = (req, res) => {
   const redirectUri = `https://${req.query.region}.battle.net/oauth/authorize?${stringify({
     client_id: process.env.BLIZZARD_CLIENT_ID,
-    redirect_uri: `http://localhost:3000/api/redirect`,
+    redirect_uri: `${process.env.NEXT_PUBLIC_URL}/api/redirect`,
     scope: 'wow.profile',
     response_type: 'code',
     state: req.query.region,
