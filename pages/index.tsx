@@ -1,4 +1,5 @@
 import { useMemo } from 'react'
+import BnetLogin from '../components/BnetLogin'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 
@@ -21,12 +22,15 @@ export default function Index() {
   }, [])
   return (
     <div>
-      <style jsx global>{`
-        body {
-          background: no-repeat center/cover url(../images/backgrounds/${background});
-        }
-      `}</style>
+      <style jsx global>
+        {`
+          body {
+            background: no-repeat center/cover url(../images/backgrounds/${background});
+          }
+        `}
+      </style>
       <Header />
+      <BnetLogin />
       <Footer />
     </div>
   )
