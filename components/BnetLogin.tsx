@@ -36,8 +36,8 @@ function RegionDD({ region, setRegion }: { region: string; setRegion: Dispatch<S
 
         <div className={styles.dropdownContent}>
           {REGIONS.map((option, index) => (
-            <button disabled={index === 4} type="button" onClick={() => setRegion(REGIONS[index])}>
-              {REGIONS[index]}
+            <button key={option} disabled={index === 4} type="button" onClick={() => setRegion(option)}>
+              {option}
             </button>
           ))}
         </div>
