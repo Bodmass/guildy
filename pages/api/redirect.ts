@@ -5,12 +5,6 @@ import base64 from 'base-64'
 import { setCookie } from 'nookies'
 
 const handler: NextApiHandler = async (req, res) => {
-  // eslint-disable-next-line no-console
-  console.log(`${process.env.BLIZZARD_CLIENT_ID}:${process.env.BLIZZARD_CLIENT_SECRET}`)
-  // eslint-disable-next-line no-console
-  console.log(req.query)
-  // eslint-disable-next-line no-console
-  console.log(req.body)
   const result = await fetch(
     `https://${req.query.state}.battle.net/oauth/token?${stringify({
       redirect_uri: `${process.env.NEXT_PUBLIC_URL}/api/redirect`,
@@ -33,8 +27,6 @@ const handler: NextApiHandler = async (req, res) => {
     sameSite: 'Lax',
     path: '/',
   })
-  // eslint-disable-next-line no-console
-  console.log(data)
   res.writeHead(301, { Location: '/' })
   res.end()
 }

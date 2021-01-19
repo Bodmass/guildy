@@ -1,40 +1,45 @@
-import { useContext, useMemo, useState } from 'react'
+import { useEffect, Dispatch, SetStateAction, useState } from 'react'
 import { destroyCookie, parseCookies } from 'nookies'
 import styles from './bnetlogin.module.css'
-import UserContext from './UserContext'
 
-const REGIONS = ['us', 'eu', 'KR', 'TW', 'CN']
+const REGIONS = ['us', 'eu', 'kr', 'tw', 'cn']
 
-function BattleNetLoginButton({ text, link, region }) {
+function BattleNetLoginButton({ text, region }: { text: string; region: string }) {
+  // WoW China requires a different API call as it doesn't use same as Global.
+  if (region === 'cn') {
+    return (
+      <div>
+        <a type="button" className={styles.buttonDisabled}>
+          <div className={styles.buttontext}>WoW China Not Yet Supported</div>
+        </a>
+      </div>
+    )
+  }
+
   return (
     <div>
-      <a type="button" className={styles.button} href={link}>
-        <div className={styles.buttontext}>
-          {text} {region}
-        </div>
+      <a type="button" className={styles.button} href={`/api/login?region=${region}`}>
+        <div className={styles.buttontext}>{text}</div>
       </a>
     </div>
   )
 }
 
-function RegionDD({ Region, setRegion }) {
-  // Map Dropdown List Instead
+function RegionDD({ region, setRegion }: { region: string; setRegion: Dispatch<SetStateAction<string>> }) {
+  // To replace with UI Framework
   return (
     <>
       <div className={styles.dropdown}>
-        <a>{Region}</a>
+        <div className={styles.dropdownText}>
+          <a>{region}</a>
+        </div>
+
         <div className={styles.dropdownContent}>
-          {/* {REGIONS.map((e) => (
-            <button type="button" onClick={() => setRegion('0')}>
-              {REGIONS[e]}
+          {REGIONS.map((option, index) => (
+            <button disabled={index === 4} type="button" onClick={() => setRegion(REGIONS[index])}>
+              {REGIONS[index]}
             </button>
-          ))} */}
-          <button type="button" onClick={() => setRegion(REGIONS[0])}>
-            US
-          </button>
-          <button type="button" onClick={() => setRegion(REGIONS[1])}>
-            EU
-          </button>
+          ))}
         </div>
       </div>
     </>
@@ -42,12 +47,12 @@ function RegionDD({ Region, setRegion }) {
 }
 
 function LoginContainer() {
-  const { loginStatus, setLoginStatus } = useContext(UserContext)
+  const [loginStatus, setLoginStatus] = useState(null)
 
-  const [Region, setRegion] = useState(REGIONS[0])
+  const [region, setRegion] = useState(REGIONS[0])
   const cookies = parseCookies().id
 
-  useMemo(() => {
+  useEffect(() => {
     if (cookies === '{}') {
       // notloggedin
     } else {
@@ -59,14 +64,9 @@ function LoginContainer() {
     return (
       <div className={styles.fullContainer}>
         <div className={styles.logo} />
-        <RegionDD Region={Region} setRegion={setRegion} />
         <div className={styles.loginContainer}>
-          <BattleNetLoginButton
-            text="Login with Battle.net"
-            // link={`https://${Region}.battle.net/oauth/authorize?scope`}
-            link={`http://localhost:3000/api/login?region=${Region}`}
-            region={Region}
-          />
+          <RegionDD region={region} setRegion={setRegion} />
+          <BattleNetLoginButton text="Login with Battle.net" region={region} />
         </div>
       </div>
     )
