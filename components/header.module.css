@@ -6,9 +6,10 @@
   align-items: center;
   width: 100%;
   height: 4rem;
-  background-color: black;
-  color: white;
+  background-color: #000000;
+  color: #ffffff;
   user-select: none;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 }
 
 .dropdown {
@@ -84,15 +85,14 @@
 }
 
 .profile:hover {
-  background: linear-gradient(black, rgb(53, 53, 53));
+  background: linear-gradient(black, #353535);
 }
 
 .profileimage {
-  background: url('https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg') no-repeat center;
   /* background-image: var(--background-image) no-repeat center; */
   margin-right: 0.5rem;
   flex: 0 0 4rem;
-  width: 100%;
+  width: 4rem;
   height: 4rem;
 }
 
@@ -158,4 +158,88 @@
 .profilenames {
   height: 4rem;
   width: 256px;
+}
+
+.settingsMode {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.35);
+  z-index: 5;
+  justify-content: center;
+  align-items: center;
+}
+
+.settingsPane {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 800px;
+  max-height: 600px;
+  background-color: black;
+}
+
+.menuBar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 0.25rem;
+  width: 100%;
+  height: 2rem;
+  font-size: 1rem;
+  background-color: #0d0d0d;
+  color: #fff;
+}
+
+.menuBar svg {
+  width: 18px;
+  height: 18px;
+}
+
+.splitPane {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: row;
+}
+
+.selectionPane {
+  background-color: #404040;
+  border: 0.25rem solid #0d0d0d;
+  border-top: 0;
+  width: 30%;
+}
+
+.contextPane {
+  background-color: #404040;
+  border: 0.25rem solid #0d0d0d;
+  border-left: 0;
+  border-top: 0;
+  width: 100%;
+  padding: 0.25rem;
+  user-select: none;
+}
+
+.selectionList {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0.25rem;
+}
+
+.selectionButton {
+  width: 100%;
+  height: 3rem;
+  background-color: #202020;
+  border: 0.15rem solid black;
+}
+
+.closeSettings:hover {
+  color: #b3b3b3;
+  cursor: pointer;
+}
+
+.closeSettings:active {
+  color: #8a8a8a;
 }
