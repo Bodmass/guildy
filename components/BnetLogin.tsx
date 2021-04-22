@@ -17,7 +17,7 @@ function BattleNetLoginButton({ text, region }: { text: string; region: string }
   }
 
   return (
-    <div>
+    <div className={styles.loginButtonContainer}>
       <a type="button" className={styles.button} href={`/api/login?region=${region}`}>
         <div className={styles.buttontext}>{text}</div>
       </a>
@@ -63,7 +63,9 @@ function LoginContainer() {
   if (loginStatus === undefined) {
     return (
       <div className={styles.fullContainer}>
-        <div className={styles.logo} />
+        <div className={styles.logo}>
+          <img src="/images/guildy/guildyLogo.png" alt="" draggable={false} />
+        </div>
         <div className={styles.loginContainer}>
           <RegionDD region={region} setRegion={setRegion} />
           <BattleNetLoginButton text="Login with Battle.net" region={region} />
