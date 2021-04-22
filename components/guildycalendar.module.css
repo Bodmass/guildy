@@ -1,0 +1,89 @@
+.calendarContainer {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  left: calc(50% - 330px);
+  bottom: calc(50% - 311px);
+  padding: 16px 15px;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  width: 660px;
+  height: 623px;
+  background: url(../public/images/guildy/calendar/calendarBG.png);
+}
+
+.calendarContainer_react-calendar__navigation button {
+  background: none;
+}
+
+#react-calendar__navigation {
+  height: 414px;
+  margin-bottom: 1em;
+}
+
+.calendarToday {
+  display: flex;
+  border: 1px solid #ffe600;
+  border-radius: 5px;
+  font-weight: bold;
+  width: 90px;
+  height: 90px;
+  background: url(../public/images/guildy/calendar/calendarTile0.png) 100%;
+}
+
+.calendar:disabled {
+  color: black;
+}
+
+.calendarNavigation {
+  background-color: black;
+}
+
+.tileEvent {
+  text-align: left;
+  position: relative;
+  width: 100%;
+  height: 15px;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 0.7rem;
+  text-overflow: ellipsis;
+  border: 1px solid #00000000;
+}
+
+.tileEventBlank {
+  width: 100%;
+  height: 15px;
+}
+
+.tileEvent:hover {
+  border: 1px solid #ffe600;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.tileEventAlt {
+  text-align: left;
+  position: relative;
+  width: 100%;
+  height: 40px;
+  border: 2px solid black;
+  overflow: hidden;
+  background-color: rgb(87, 57, 2);
+  white-space: nowrap;
+  font-size: 0.7rem;
+  text-overflow: ellipsis;
+  border-radius: 5px;
+  margin: 1px 0px;
+}
+
+.tiles {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  width: 80px;
+}
