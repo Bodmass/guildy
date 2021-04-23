@@ -51,12 +51,16 @@
 }
 
 .contextPane {
+  display: flex;
+  flex-direction: column;
   background-color: #404040;
   border: 0.25rem solid #0d0d0d;
+  color: #fff;
   border-left: 0;
   border-top: 0;
   width: 100%;
-  padding: 0.25rem;
+  padding: 1rem;
+  overflow-y: scroll;
   user-select: none;
 }
 
@@ -80,4 +84,36 @@
 
 .closeSettings:active {
   color: #8a8a8a;
+}
+
+.contextPaneOption {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.bgGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.bgGridComponent {
+  margin: 0.5rem;
+  display: flex;
+  background-color: #202020;
+  width: 213px;
+  height: 120px;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+}
+
+.bgGridComponent:hover {
+  cursor: pointer;
+  filter: brightness(0.75);
+}
+
+.bgGridComponent:active {
+  filter: brightness(1.25);
 }

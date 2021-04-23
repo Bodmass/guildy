@@ -2,9 +2,25 @@ import { useState } from 'react'
 import { FaTimes } from 'react-icons/fa'
 import MenuItem from '@material-ui/core/MenuItem'
 import MenuList from '@material-ui/core/MenuList'
+import FormControl from '@material-ui/core/FormControl'
+import Select from '@material-ui/core/Select'
+import { parseCookies, setCookie } from 'nookies'
 import styles from './settings.module.css'
 
-const OPTIONS = ['General', 'Theme', 'Account Settings', 'Support']
+const OPTIONS = ['General', 'Character', 'Account ', 'Support']
+
+const bgArray = [
+  'maw1.jpg',
+  'maw2.jpg',
+  'ardenweald1.jpg',
+  'bastion1.jpg',
+  'bastion2.jpg',
+  'maldraxxus1.jpg',
+  'maldraxxus2.jpg',
+  'revendreth1.jpg',
+  'revendreth2.jpg',
+  'venari.jpg',
+]
 
 function SettingsList({ options, setOption }) {
   const handleMenuItemClick = (event, index) => {
@@ -33,10 +49,95 @@ function SettingsList({ options, setOption }) {
 }
 
 function Options({ optionSelected }) {
+  const [state, setState] = useState({
+    language: 'english',
+    theme: 'dark',
+  })
+
+  const handleChange = (event) => {
+    const {name} = event.target
+    setState({
+      ...state,
+      [name]: event.target.value,
+    })
+  }
   if (optionSelected === 0) {
     return (
       <div className={styles.contextPane}>
-        <span>General</span>
+        <div className={styles.contextPaneOption}>
+          <span>Language</span>
+          <FormControl>
+            <Select
+              native
+              value={state.language}
+              onChange={handleChange}
+              label="Language"
+              inputProps={{
+                name: 'language',
+                id: 'outlined-age-native-simple',
+              }}
+              style={{
+                width: '10rem',
+                fontSize: '0.8rem',
+                color: '#000',
+                backgroundColor: '#fff',
+                padding: '0.25rem',
+                fontWeight: 'bold',
+              }}
+            >
+              <option value="en_GB">English</option>
+              <option value="es_ES">Español</option>
+              <option value="de_DE">Deutsch</option>
+              <option value="fr_FR">Français</option>
+              <option value="it_IT">Italiano</option>
+              <option value="pt_BR">Português</option>
+              <option value="gr_GR">Русский</option>
+              <option value="ko_KR">한국어</option>
+              <option value="zh_TW">繁體中文</option>
+            </Select>
+          </FormControl>
+        </div>
+        <div className={styles.contextPaneOption}>
+          <span>Theme</span>
+          <FormControl>
+            <Select
+              native
+              value={state.theme}
+              onChange={handleChange}
+              label="Theme"
+              inputProps={{
+                name: 'theme',
+                id: 'outlined-age-native-simple',
+              }}
+              style={{
+                width: '10rem',
+                fontSize: '0.8rem',
+                color: '#000',
+                backgroundColor: '#fff',
+                padding: '0.25rem',
+                fontWeight: 'bold',
+              }}
+            >
+              <option value="dark">Dark</option>
+              <option value="light">Light</option>
+            </Select>
+          </FormControl>
+        </div>
+        <div className={styles.contextPaneOption}>
+          <span>Background</span>
+
+          <div className={styles.bgGrid}>
+            <div className={styles.bgGridComponent}>
+              <span>RANDOM</span>
+            </div>
+            {bgArray.map((index) => (
+              <div
+                className={styles.bgGridComponent}
+                style={{ background: `no-repeat center/cover url(../images/backgrounds/${index})` }}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     )
   }
@@ -66,6 +167,15 @@ function Options({ optionSelected }) {
 
 const SettingsWindow = ({ windowStatus, setWindow }) => {
   const [optionSelected, setOption] = useState(null)
+
+  if (!parseCookies().settings) {
+    const settings = { language: 'en-gb', timezone: '0', appTheme: 'dark', bg: 0, calendarTheme: 0 }
+    setCookie(null, 'settings', JSON.stringify(settings), {
+      expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 90),
+      sameSite: 'Lax',
+      path: '/',
+    })
+  }
 
   if (windowStatus === false) {
     return (
