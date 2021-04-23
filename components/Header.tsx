@@ -6,6 +6,10 @@ import Notifications from './HeaderDropdown/Notifications'
 import SettingsPopover from './HeaderDropdown/SettingsDropdown'
 
 function AvatarRender({ avatarURL }: { avatarURL: string }) {
+  if (!parseCookies().character) {
+    return <></>
+  }
+
   useEffect(() => {
     document.getElementById('avatarImg').setAttribute('src', avatarURL)
   }, [])
