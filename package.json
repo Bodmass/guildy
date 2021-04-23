@@ -39,10 +39,12 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
+    "@types/jsonwebtoken": "^8.5.1",
     "base-64": "^1.0.0",
     "date-fns": "^2.16.1",
     "fathom-client": "^3.0.0",
     "isomorphic-fetch": "^3.0.0",
+    "jsonwebtoken": "^8.5.1",
     "next": "^9.5.3",
     "next-seo": "^4.7.3",
     "nookies": "^2.5.0",

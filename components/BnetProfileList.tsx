@@ -6,6 +6,7 @@ import { parseCookies, setCookie } from 'nookies'
 import { stringify } from 'querystring'
 import { useEffect, useState } from 'react'
 import useSWR from 'swr'
+import jwt from 'jsonwebtoken'
 import styles from './bnetprofilelist.module.css'
 
 const useStyles = makeStyles(() =>
@@ -32,9 +33,8 @@ const useStyles = makeStyles(() =>
 const CHARACTERLEVELFILTER = 50
 
 async function GetCharacterAvatar(name, realm) {
-  const { id } = parseCookies()
-  const idParsed = JSON.parse(id || '{}')
-  const accessToken = idParsed.access_token
+  const accessToken = JSON.parse((jwt.decode(JSON.parse(parseCookies().id)) as { [key: string]: string }).sessionToken)
+    .access_token
   const redirectUri = `https://eu.api.blizzard.com/profile/wow/character/${realm}/${name.toLowerCase()}/character-media?${stringify(
     {
       namespace: `profile-eu`,
@@ -49,9 +49,8 @@ async function GetCharacterAvatar(name, realm) {
 }
 
 async function GetCharacterGuild(name, realm) {
-  const { id } = parseCookies()
-  const idParsed = JSON.parse(id || '{}')
-  const accessToken = idParsed.access_token
+  const accessToken = JSON.parse((jwt.decode(JSON.parse(parseCookies().id)) as { [key: string]: string }).sessionToken)
+    .access_token
   const redirectUri = `https://eu.api.blizzard.com/profile/wow/character/${realm}/${name.toLowerCase()}?${stringify({
     namespace: `profile-eu`,
     locale: 'en_GB',
@@ -173,9 +172,8 @@ function jsonFetch(url: string) {
 
 const BnetProfileList = () => {
   const [characterList, setCharacterList] = useState([])
-  const { id } = parseCookies()
-  const idParsed = JSON.parse(id || '{}')
-  const accessToken = idParsed.access_token
+  const accessToken = JSON.parse((jwt.decode(JSON.parse(parseCookies().id)) as { [key: string]: string }).sessionToken)
+    .access_token
 
   const redirectUri = `https://eu.api.blizzard.com/profile/user/wow?${stringify({
     namespace: `profile-eu`,
