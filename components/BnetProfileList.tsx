@@ -33,11 +33,12 @@ const useStyles = makeStyles(() =>
 const CHARACTERLEVELFILTER = 50
 
 async function GetCharacterAvatar(name, realm) {
+  const {region} = parseCookies()
   const accessToken = JSON.parse((jwt.decode(JSON.parse(parseCookies().id)) as { [key: string]: string }).sessionToken)
     .access_token
-  const redirectUri = `https://eu.api.blizzard.com/profile/wow/character/${realm}/${name.toLowerCase()}/character-media?${stringify(
+  const redirectUri = `https://${region}.api.blizzard.com/profile/wow/character/${realm}/${name.toLowerCase()}/character-media?${stringify(
     {
-      namespace: `profile-eu`,
+      namespace: `profile-${region}`,
       locale: 'en_GB',
       access_token: accessToken,
     }
@@ -49,13 +50,16 @@ async function GetCharacterAvatar(name, realm) {
 }
 
 async function GetCharacterGuild(name, realm) {
+  const {region} = parseCookies()
   const accessToken = JSON.parse((jwt.decode(JSON.parse(parseCookies().id)) as { [key: string]: string }).sessionToken)
     .access_token
-  const redirectUri = `https://eu.api.blizzard.com/profile/wow/character/${realm}/${name.toLowerCase()}?${stringify({
-    namespace: `profile-eu`,
-    locale: 'en_GB',
-    access_token: accessToken,
-  })}`
+  const redirectUri = `https://${region}.api.blizzard.com/profile/wow/character/${realm}/${name.toLowerCase()}?${stringify(
+    {
+      namespace: `profile-${region}`,
+      locale: 'en_GB',
+      access_token: accessToken,
+    }
+  )}`
   const res = await fetch(redirectUri)
   const json = await res.json()
   // console.log(json)
@@ -67,6 +71,7 @@ async function PopulateData(accountData) {
   const characterList = []
   // CHARACTERLIST.length = 0
   // console.log(data)
+
   const rawCharacters = accountData.wow_accounts.flatMap((e) => e.characters)
   await Promise.all(
     rawCharacters.map(async (i) => {
@@ -172,11 +177,12 @@ function jsonFetch(url: string) {
 
 const BnetProfileList = () => {
   const [characterList, setCharacterList] = useState([])
+  const {region} = parseCookies()
   const accessToken = JSON.parse((jwt.decode(JSON.parse(parseCookies().id)) as { [key: string]: string }).sessionToken)
     .access_token
 
-  const redirectUri = `https://eu.api.blizzard.com/profile/user/wow?${stringify({
-    namespace: `profile-eu`,
+  const redirectUri = `https://${region}.api.blizzard.com/profile/user/wow?${stringify({
+    namespace: `profile-${region}`,
     locale: 'en_GB',
     access_token: accessToken,
   })}`
@@ -186,6 +192,9 @@ const BnetProfileList = () => {
   useEffect(() => {
     ;(async () => {
       if (data) {
+        if (data.code === 404) {
+          return
+        }
         setCharacterList(await PopulateData(data))
       }
     })()

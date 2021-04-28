@@ -1,5 +1,5 @@
 import { useEffect, Dispatch, SetStateAction, useState } from 'react'
-import { destroyCookie, parseCookies } from 'nookies'
+import { destroyCookie, parseCookies, setCookie } from 'nookies'
 import styles from './bnetlogin.module.css'
 
 const REGIONS = ['us', 'eu', 'kr', 'tw', 'cn']
@@ -26,7 +26,6 @@ function BattleNetLoginButton({ text, region }: { text: string; region: string }
 }
 
 function RegionDD({ region, setRegion }: { region: string; setRegion: Dispatch<SetStateAction<string>> }) {
-  // To replace with UI Framework
   return (
     <>
       <div className={styles.dropdown}>
@@ -36,7 +35,19 @@ function RegionDD({ region, setRegion }: { region: string; setRegion: Dispatch<S
 
         <div className={styles.dropdownContent}>
           {REGIONS.map((option, index) => (
-            <button key={option} disabled={index === 4} type="button" onClick={() => setRegion(option)}>
+            <button
+              key={option}
+              disabled={index === 4}
+              type="button"
+              onClick={() => {
+                setRegion(option)
+                setCookie(null, 'region', option, {
+                  expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 90),
+                  sameSite: 'Lax',
+                  path: '/',
+                })
+              }}
+            >
               {option}
             </button>
           ))}
@@ -48,11 +59,14 @@ function RegionDD({ region, setRegion }: { region: string; setRegion: Dispatch<S
 
 function LoginContainer() {
   const [loginStatus, setLoginStatus] = useState(null)
-
-  const [region, setRegion] = useState(REGIONS[0])
+  const regionCookies = parseCookies().region
+  const [region, setRegion] = useState(regionCookies || REGIONS[0])
   const cookies = parseCookies().id
 
   useEffect(() => {
+    if (regionCookies === null) {
+      setRegion(regionCookies)
+    }
     if (cookies === '{}') {
       // notloggedin
     } else {
