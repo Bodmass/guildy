@@ -1,5 +1,5 @@
 # Guildy (In Development) 
-![GitHub Logo](/public/images/guildy/guildLogo.png)
+![GitHub Logo](/public/images/guildy/guildyLogo.png)
 - App
   - https://github.com/Bodmass/guildy
   - https://guildywow.herokuapp.com
