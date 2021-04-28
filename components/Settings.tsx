@@ -55,7 +55,7 @@ function Options({ optionSelected }) {
   })
 
   const handleChange = (event) => {
-    const {name} = event.target
+    const { name } = event.target
     setState({
       ...state,
       [name]: event.target.value,
@@ -166,7 +166,7 @@ function Options({ optionSelected }) {
 }
 
 const SettingsWindow = ({ windowStatus, setWindow }) => {
-  const [optionSelected, setOption] = useState(null)
+  const [optionSelected, setOption] = useState(0)
 
   if (!parseCookies().settings) {
     const settings = { language: 'en-gb', timezone: '0', appTheme: 'dark', bg: 0, calendarTheme: 0 }
