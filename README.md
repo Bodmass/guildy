@@ -1,5 +1,5 @@
 # Guildy (In Development) 
-![GitHub Logo](/public/images/guildy/loginlogo.png)
+![GitHub Logo](/public/images/guildy/guildLogo.png)
 - App
   - https://github.com/Bodmass/guildy
   - https://guildywow.herokuapp.com
@@ -37,6 +37,7 @@ Environment Variable | Description
 BLIZZARD_CLIENT_ID | OAuth ID for Battle.net
 BLIZZARD_CLIENT_SECRET | OAuth Secret for Battle.net
 NEXT_PUBLIC_URL | URL to send to Battle.net for Redirect
+JWTSECRET | Secret to verify JWT
 
 Visit the [Blizzard Battle.net Developer Portal](https://develop.battle.net/) to obtain your own Blizzard API credentials.
 
