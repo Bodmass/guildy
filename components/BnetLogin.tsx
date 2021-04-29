@@ -3,6 +3,8 @@ import { destroyCookie, parseCookies, setCookie } from 'nookies'
 import styles from './bnetlogin.module.css'
 
 const REGIONS = ['us', 'eu', 'kr', 'tw', 'cn']
+const APAC_REGION_ID = 4
+const NINETY_DAYS = +1000 * 60 * 60 * 24 * 90
 
 function BattleNetLoginButton({ text, region }: { text: string; region: string }) {
   // WoW China requires a different API call as it doesn't use same as Global.
@@ -37,12 +39,12 @@ function RegionDD({ region, setRegion }: { region: string; setRegion: Dispatch<S
           {REGIONS.map((option, index) => (
             <button
               key={option}
-              disabled={index === 4}
+              disabled={index === APAC_REGION_ID}
               type="button"
               onClick={() => {
                 setRegion(option)
                 setCookie(null, 'region', option, {
-                  expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 90),
+                  expires: new Date(Date.now() + NINETY_DAYS),
                   sameSite: 'Lax',
                   path: '/',
                 })
@@ -59,14 +61,10 @@ function RegionDD({ region, setRegion }: { region: string; setRegion: Dispatch<S
 
 function LoginContainer() {
   const [loginStatus, setLoginStatus] = useState(null)
-  const regionCookies = parseCookies().region
-  const [region, setRegion] = useState(regionCookies || REGIONS[0])
+  const [region, setRegion] = useState(() => parseCookies().region || REGIONS[0])
   const cookies = parseCookies().id
 
   useEffect(() => {
-    if (regionCookies === null) {
-      setRegion(regionCookies)
-    }
     if (cookies === '{}') {
       // notloggedin
     } else {
