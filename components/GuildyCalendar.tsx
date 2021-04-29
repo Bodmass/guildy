@@ -76,7 +76,7 @@ function TileClassName({ date, _view }) {
     return styles.calendarToday
   }
 
-  return ''
+  return null
 }
 
 function TileContent({ date, _view }) {
@@ -86,11 +86,11 @@ function TileContent({ date, _view }) {
     if (isSameDay(DAY, date)) {
       tileEvents.push(e)
     }
-    return ''
+    return null
   })
 
   if (tileEvents.length === 0) {
-    return ''
+    return null
   }
 
   if (tileEvents.length > 1) {
