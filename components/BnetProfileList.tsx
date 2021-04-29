@@ -31,9 +31,10 @@ const useStyles = makeStyles(() =>
 )
 
 const CHARACTERLEVELFILTER = 50
+const NINETY_DAYS = +1000 * 60 * 60 * 24 * 90
 
 async function GetCharacterAvatar(name, realm) {
-  const {region} = parseCookies()
+  const { region } = parseCookies()
   const accessToken = JSON.parse((jwt.decode(JSON.parse(parseCookies().id)) as { [key: string]: string }).sessionToken)
     .access_token
   const redirectUri = `https://${region}.api.blizzard.com/profile/wow/character/${realm}/${name.toLowerCase()}/character-media?${stringify(
@@ -50,7 +51,7 @@ async function GetCharacterAvatar(name, realm) {
 }
 
 async function GetCharacterGuild(name, realm) {
-  const {region} = parseCookies()
+  const { region } = parseCookies()
   const accessToken = JSON.parse((jwt.decode(JSON.parse(parseCookies().id)) as { [key: string]: string }).sessionToken)
     .access_token
   const redirectUri = `https://${region}.api.blizzard.com/profile/wow/character/${realm}/${name.toLowerCase()}?${stringify(
@@ -119,7 +120,7 @@ function ProfileList({ profile }: { profile: any[] }) {
     const option = profile[index]
     const character = { name: option.charactername, guild: option.guild, avatarUrl: option.avatar }
     setCookie(null, 'character', JSON.stringify(character), {
-      expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 90),
+      expires: new Date(Date.now() + NINETY_DAYS),
       sameSite: 'Lax',
       path: '/',
     })
@@ -177,7 +178,7 @@ function jsonFetch(url: string) {
 
 const BnetProfileList = () => {
   const [characterList, setCharacterList] = useState([])
-  const {region} = parseCookies()
+  const { region } = parseCookies()
   const accessToken = JSON.parse((jwt.decode(JSON.parse(parseCookies().id)) as { [key: string]: string }).sessionToken)
     .access_token
 
