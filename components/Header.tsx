@@ -41,14 +41,13 @@ const Header = () => {
 
   // eslint-disable-next-line no-console
   // console.log(characterGuild)
-
-  if (characterStatus !== undefined) {
-    return (
-      <div>
-        <SettingsWindow windowStatus={settingsWindowStatus} setWindow={setSettingsWindow} />
-        <div className={styles.header}>
-          <div className={styles.toggleMobile} />
-          <div className={styles.togglePC}>
+  return (
+    <div>
+      <SettingsWindow windowStatus={settingsWindowStatus} setWindow={setSettingsWindow} />
+      <div className={styles.header}>
+        <div className={styles.toggleMobile} />
+        <div className={styles.togglePC}>
+          {characterStatus ? (
             <div className={styles.profile}>
               <div className={styles.flex}>
                 <AvatarRender avatarURL={characterAvatar} />
@@ -58,26 +57,11 @@ const Header = () => {
                 </div>
               </div>
             </div>
-          </div>
-          <div className={styles.buttons}>
-            <Notifications />
-            <SettingsPopover characterData={characterParsed} setSettings={setSettingsWindow} />
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  return (
-    <div>
-      <SettingsWindow windowStatus={settingsWindowStatus} setWindow={setSettingsWindow} />
-      <div className={styles.header}>
-        <div className={styles.toggleMobile} />
-        <div className={styles.togglePC}>
-          <div className={styles.profile} />
+          ) : null}
         </div>
         <div className={styles.buttons}>
-          <SettingsPopover characterData={undefined} setSettings={setSettingsWindow} />
+          {characterStatus ? <Notifications /> : null}
+          <SettingsPopover characterData={characterParsed} setSettings={setSettingsWindow} />
         </div>
       </div>
     </div>
