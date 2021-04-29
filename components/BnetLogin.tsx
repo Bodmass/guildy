@@ -1,8 +1,10 @@
 import { useEffect, Dispatch, SetStateAction, useState } from 'react'
-import { destroyCookie, parseCookies } from 'nookies'
+import { destroyCookie, parseCookies, setCookie } from 'nookies'
 import styles from './bnetlogin.module.css'
 
 const REGIONS = ['us', 'eu', 'kr', 'tw', 'cn']
+const APAC_REGION_ID = 4
+const NINETY_DAYS = +1000 * 60 * 60 * 24 * 90
 
 function BattleNetLoginButton({ text, region }: { text: string; region: string }) {
   // WoW China requires a different API call as it doesn't use same as Global.
@@ -17,7 +19,7 @@ function BattleNetLoginButton({ text, region }: { text: string; region: string }
   }
 
   return (
-    <div>
+    <div className={styles.loginButtonContainer}>
       <a type="button" className={styles.button} href={`/api/login?region=${region}`}>
         <div className={styles.buttontext}>{text}</div>
       </a>
@@ -26,7 +28,6 @@ function BattleNetLoginButton({ text, region }: { text: string; region: string }
 }
 
 function RegionDD({ region, setRegion }: { region: string; setRegion: Dispatch<SetStateAction<string>> }) {
-  // To replace with UI Framework
   return (
     <>
       <div className={styles.dropdown}>
@@ -36,7 +37,19 @@ function RegionDD({ region, setRegion }: { region: string; setRegion: Dispatch<S
 
         <div className={styles.dropdownContent}>
           {REGIONS.map((option, index) => (
-            <button key={option} disabled={index === 4} type="button" onClick={() => setRegion(option)}>
+            <button
+              key={option}
+              disabled={index === APAC_REGION_ID}
+              type="button"
+              onClick={() => {
+                setRegion(option)
+                setCookie(null, 'region', option, {
+                  expires: new Date(Date.now() + NINETY_DAYS),
+                  sameSite: 'Lax',
+                  path: '/',
+                })
+              }}
+            >
               {option}
             </button>
           ))}
@@ -48,8 +61,7 @@ function RegionDD({ region, setRegion }: { region: string; setRegion: Dispatch<S
 
 function LoginContainer() {
   const [loginStatus, setLoginStatus] = useState(null)
-
-  const [region, setRegion] = useState(REGIONS[0])
+  const [region, setRegion] = useState(() => parseCookies().region || REGIONS[0])
   const cookies = parseCookies().id
 
   useEffect(() => {
@@ -63,7 +75,9 @@ function LoginContainer() {
   if (loginStatus === undefined) {
     return (
       <div className={styles.fullContainer}>
-        <div className={styles.logo} />
+        <div className={styles.logo}>
+          <img src="/images/guildy/guildyLogo.png" alt="" draggable={false} />
+        </div>
         <div className={styles.loginContainer}>
           <RegionDD region={region} setRegion={setRegion} />
           <BattleNetLoginButton text="Login with Battle.net" region={region} />

@@ -3,6 +3,7 @@ import fetch from 'isomorphic-fetch'
 import { stringify } from 'querystring'
 import base64 from 'base-64'
 import { setCookie } from 'nookies'
+import jwt from 'jsonwebtoken'
 
 const handler: NextApiHandler = async (req, res) => {
   const result = await fetch(
@@ -22,7 +23,17 @@ const handler: NextApiHandler = async (req, res) => {
     }
   )
   const data = await result.json()
-  setCookie({ res }, 'id', JSON.stringify(data), {
+
+  const sessionToken = JSON.stringify(data)
+
+  const loginToken = jwt.sign(
+    {
+      sessionToken,
+    },
+    process.env.JWTSECRET
+  )
+
+  setCookie({ res }, 'id', JSON.stringify(loginToken), {
     expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 90),
     sameSite: 'Lax',
     path: '/',

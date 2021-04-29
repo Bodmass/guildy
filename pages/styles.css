@@ -3,6 +3,7 @@
   --breakpoint-tablet: 768px;
   --breakpont-desktop: 992px;
   --desktop-only-display: none;
+  background-color: black;
 }
 
 @media screen and (min-width: 576px) {
@@ -112,4 +113,25 @@ select {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #3d3d3d;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border: 1px solid black;
+  background: #b1b1b1;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #e6e6e6;
 }

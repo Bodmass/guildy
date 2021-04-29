@@ -1,0 +1,80 @@
+.react-calendar__navigation {
+  display: flex;
+  margin-top: -1rem;
+  margin-bottom: 5px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  width: 235px;
+}
+
+.react-calendar__navigation__label {
+  border: 0;
+  background: url(../public/images/guildy/calendar/calendarMonth.png) 50% no-repeat;
+}
+
+.react-calendar__navigation__label:hover {
+  background-color: none;
+}
+
+.react-calendar__navigation__arrow.react-calendar__navigation__next2-button,
+.react-calendar__navigation__arrow.react-calendar__navigation__prev2-button {
+  display: none;
+}
+
+.react-calendar__navigation__arrow.react-calendar__navigation__next-button,
+.react-calendar__navigation__arrow.react-calendar__navigation__prev-button {
+  border-radius: 5px;
+  border: 0px;
+  width: 32px;
+  height: 32px;
+  color: #ffb100;
+  background: url(../public/images/guildy/calendar/calendarButton.png) center no-repeat;
+}
+
+.react-calendar__navigation__arrow.react-calendar__navigation__prev-button:enabled:hover,
+.react-calendar__navigation__arrow.react-calendar__navigation__next-button:enabled:hover {
+  background: url(../public/images/guildy/calendar/calendarButtonDown.png) center no-repeat;
+}
+
+.react-calendar__navigation__arrow.react-calendar__navigation__prev-button:enabled:active,
+.react-calendar__navigation__arrow.react-calendar__navigation__next-button:enabled:active {
+  background: url(../public/images/guildy/calendar/calendarButton.png) center no-repeat;
+  filter: brightness(120%);
+}
+
+.react-calendar__navigation button {
+  color: rgb(255, 255, 255);
+}
+
+.react-calendar__navigation button[disabled] {
+  background-color: none;
+}
+
+.react-calendar__month-view__weekdays__weekday abbr {
+  text-decoration: none;
+}
+
+.react-calendar__tile {
+  display: flex;
+  color: #fff;
+  border: 0;
+  font-weight: bold;
+  width: 90px;
+  height: 90px;
+  background: url(../public/images/guildy/calendar/calendarTile0.png) 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 5px;
+}
+
+.react-calendar__tile abbr {
+  padding-left: 2px;
+  padding-top: 2px;
+}
+
+.react-calendar__tile:disabled {
+  background-color: #f0f0f0;
+  color: black;
+  filter: brightness(60%);
+}
