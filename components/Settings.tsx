@@ -8,6 +8,7 @@ import { parseCookies, setCookie } from 'nookies'
 import styles from './settings.module.css'
 
 const OPTIONS = ['General', 'Character', 'Account ', 'Support']
+const NINETY_DAYS = +1000 * 60 * 60 * 24 * 90
 
 const bgArray = [
   'maw1.jpg',
@@ -171,18 +172,14 @@ const SettingsWindow = ({ windowStatus, setWindow }) => {
   if (!parseCookies().settings) {
     const settings = { language: 'en-gb', timezone: '0', appTheme: 'dark', bg: 0, calendarTheme: 0 }
     setCookie(null, 'settings', JSON.stringify(settings), {
-      expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 90),
+      expires: new Date(Date.now() + NINETY_DAYS),
       sameSite: 'Lax',
       path: '/',
     })
   }
 
   if (windowStatus === false) {
-    return (
-      <div>
-        <span />
-      </div>
-    )
+    return null
   }
   return (
     <div className={styles.settingsMode}>
