@@ -63,15 +63,12 @@ async function GetCharacterGuild(name, realm) {
   )}`
   const res = await fetch(redirectUri)
   const json = await res.json()
-  // console.log(json)
 
   return json.guild?.name || ''
 }
 
 async function PopulateData(accountData) {
   const characterList = []
-  // CHARACTERLIST.length = 0
-  // console.log(data)
 
   const rawCharacters = accountData.wow_accounts.flatMap((e) => e.characters)
   await Promise.all(
@@ -92,7 +89,6 @@ async function PopulateData(accountData) {
 
         characterList.push(newCharacter)
       }
-      // console.log(i)
     })
   )
 
@@ -125,7 +121,6 @@ function ProfileList({ profile }: { profile: any[] }) {
       path: '/',
     })
   }
-  // PopulateData(profileData)
   return (
     <div className={styles.characterSelection}>
       <div className={styles.selectCharacter}>Select a Character</div>

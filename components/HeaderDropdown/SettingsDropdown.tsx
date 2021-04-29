@@ -40,7 +40,6 @@ const SettingsPopover = ({ setSettings, characterData }: { setSettings: Function
     }
   }
 
-  // return focus to the button when we transitioned from !open -> open
   const prevOpen = useRef(open)
   useEffect(() => {
     if (prevOpen.current === true && open === false) {

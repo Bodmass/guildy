@@ -110,16 +110,7 @@ function TileContent({ date, _view }) {
   return (
     <div className={styles.tiles}>
       {tileEvents.map((event) => (
-        <div
-          className={styles.tileEvent}
-          onClick={() => {
-            // eslint-disable-next-line no-console
-            console.log(event.name)
-          }}
-          onKeyUp={() => {}}
-          role="button"
-          tabIndex={0}
-        >
+        <div className={styles.tileEvent} onClick={() => {}} onKeyUp={() => {}} role="button" tabIndex={0}>
           <a>{event.name}</a>
         </div>
       ))}

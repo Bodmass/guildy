@@ -39,8 +39,6 @@ const Header = () => {
     }
   }, [])
 
-  // eslint-disable-next-line no-console
-  // console.log(characterGuild)
   return (
     <div>
       <SettingsWindow windowStatus={settingsWindowStatus} setWindow={setSettingsWindow} />
