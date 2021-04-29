@@ -1,4 +1,4 @@
-import { FaTwitter, FaDiscord } from 'react-icons/fa'
+import { FaTwitter, FaGithub } from 'react-icons/fa'
 import styles from './footer.module.css'
 
 const Footer = () => {
@@ -6,11 +6,11 @@ const Footer = () => {
     <div className={styles.footer}>
       <div className={styles.logo} />
       <div className={styles.icons}>
-        <a className={styles.icon} href="https://twitter.com">
+        <a className={styles.icon} href="https://twitter.com/BodmassAD">
           <FaTwitter />
         </a>
-        <a className={styles.icon} href="https://discord.com">
-          <FaDiscord />
+        <a className={styles.icon} href="https://github.com/Bodmass/guildy">
+          <FaGithub />
         </a>
       </div>
     </div>
