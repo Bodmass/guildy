@@ -13,7 +13,7 @@
   font-weight: bold;
   width: 660px;
   height: 623px;
-  background: url(../public/images/guildy/calendar/calendarBG.png);
+  background: var(--calendar-bg);
 }
 
 .calendarContainer_react-calendar__navigation button {
@@ -32,7 +32,7 @@
   font-weight: bold;
   width: 90px;
   height: 90px;
-  background: url(../public/images/guildy/calendar/calendarTile0.png) 100%;
+  background: var(--calendar-tile);
 }
 
 .calendar:disabled {

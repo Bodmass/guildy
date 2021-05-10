@@ -1,3 +1,8 @@
+:root {
+  --calendar-bg: url(../public/images/guildy/calendar/wow-theme/calendarBG.png);
+  --calendar-tile: url(../public/images/guildy/calendar/wow-theme/calendarTile0.png) 100%;
+}
+
 .react-calendar__navigation {
   display: flex;
   margin-top: -1rem;
@@ -10,7 +15,7 @@
 
 .react-calendar__navigation__label {
   border: 0;
-  background: url(../public/images/guildy/calendar/calendarMonth.png) 50% no-repeat;
+  background: url(../public/images/guildy/calendar/wow-theme/calendarMonth.png) 50% no-repeat;
 }
 
 .react-calendar__navigation__label:hover {
@@ -29,17 +34,17 @@
   width: 32px;
   height: 32px;
   color: #ffb100;
-  background: url(../public/images/guildy/calendar/calendarButton.png) center no-repeat;
+  background: url(../public/images/guildy/calendar/wow-theme/calendarButton.png) center no-repeat;
 }
 
 .react-calendar__navigation__arrow.react-calendar__navigation__prev-button:enabled:hover,
 .react-calendar__navigation__arrow.react-calendar__navigation__next-button:enabled:hover {
-  background: url(../public/images/guildy/calendar/calendarButtonDown.png) center no-repeat;
+  background: url(../public/images/guildy/calendar/wow-theme/calendarButtonDown.png) center no-repeat;
 }
 
 .react-calendar__navigation__arrow.react-calendar__navigation__prev-button:enabled:active,
 .react-calendar__navigation__arrow.react-calendar__navigation__next-button:enabled:active {
-  background: url(../public/images/guildy/calendar/calendarButton.png) center no-repeat;
+  background: url(../public/images/guildy/calendar/wow-theme/calendarButton.png) center no-repeat;
   filter: brightness(120%);
 }
 
@@ -62,7 +67,7 @@
   font-weight: bold;
   width: 90px;
   height: 90px;
-  background: url(../public/images/guildy/calendar/calendarTile0.png) 100%;
+  background: url(../public/images/guildy/calendar/wow-theme/calendarTile0.png) 100%;
   flex-direction: column;
   justify-content: space-between;
   padding-bottom: 5px;
