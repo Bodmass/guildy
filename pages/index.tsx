@@ -21,7 +21,7 @@ const bgArray = [
 
 export default function Index() {
   const background = useMemo(() => {
-    return bgArray[Math.floor(Math.random() * bgArray.length)]
+    return bgArray[new Date().getDay() % bgArray.length]
   }, [])
 
   const [loginStatus, setLoginStatus] = useState(null)
