@@ -71,7 +71,9 @@ function Options({ optionSelected }) {
       [name]: event.target.value,
     })
 
-    setColorMode(state.theme === 'light' ? `dark` : 'light')
+    if (name === 'theme') {
+      setColorMode(state.theme === 'light' ? `dark` : 'light')
+    }
   }
   if (optionSelected === 0) {
     return (
