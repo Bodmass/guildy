@@ -13,9 +13,9 @@ const useStyles = makeStyles(() =>
   createStyles({
     root: {
       width: '100%',
-      border: '2px solid black',
+      border: '2px solid var(--color-background-shade-1)',
       borderRadius: '1rem',
-      backgroundColor: '#202020',
+      backgroundColor: 'var(--color-background-shade-4)',
       position: 'relative',
       overflowY: 'scroll',
       height: 330,
