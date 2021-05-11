@@ -51,6 +51,7 @@
 }
 
 .dropdownText {
+  color: black;
   display: flex;
   height: 100%;
   align-items: center;
