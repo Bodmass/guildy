@@ -2,6 +2,7 @@ import './styles.css'
 import Head from 'next/head'
 import { DefaultSeo } from 'next-seo'
 import useFathom from '../components/hooks/useFathom'
+import { ThemeProvider } from '../components/contexts/theme'
 import SEO from '../next-seo.config'
 import './calendar.css'
 
@@ -15,7 +16,9 @@ function App({ Component, pageProps }) {
         <link rel="icon" href="/images/icon.svg" />
       </Head>
       <DefaultSeo {...SEO} />
-      <Component {...pageProps} />
+      <ThemeProvider>
+        <Component {...pageProps} />
+      </ThemeProvider>
     </>
   )
 }

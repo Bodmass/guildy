@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { FaTimes } from 'react-icons/fa'
 import MenuItem from '@material-ui/core/MenuItem'
 import MenuList from '@material-ui/core/MenuList'
@@ -6,6 +6,7 @@ import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
 import { parseCookies, setCookie } from 'nookies'
 import styles from './settings.module.css'
+import { ThemeContext } from './contexts/theme'
 
 const OPTIONS = ['General', 'Character', 'Account ', 'Support']
 const NINETY_DAYS = +1000 * 60 * 60 * 24 * 90
@@ -34,9 +35,9 @@ function SettingsList({ options, setOption }) {
           style={{
             width: `100%`,
             height: `3rem`,
-            backgroundColor: `#202020`,
+            backgroundColor: `var(--color-background-shade-4)`,
             color: `#fff`,
-            border: `0.15rem solid black`,
+            border: `0.15rem solid var(--color-background-shade-1)`,
             marginBottom: `0.25rem`,
           }}
           key={index}
@@ -50,10 +51,18 @@ function SettingsList({ options, setOption }) {
 }
 
 function Options({ optionSelected }) {
+  const { colorMode, setColorMode } = useContext(ThemeContext)
+
   const [state, setState] = useState({
     language: 'english',
     theme: 'dark',
   })
+
+  useEffect(() => {
+    if (colorMode) {
+      setState({ ...state, theme: colorMode })
+    }
+  }, [])
 
   const handleChange = (event) => {
     const { name } = event.target
@@ -61,6 +70,10 @@ function Options({ optionSelected }) {
       ...state,
       [name]: event.target.value,
     })
+
+    if (name === 'theme') {
+      setColorMode(state.theme === 'light' ? `dark` : 'light')
+    }
   }
   if (optionSelected === 0) {
     return (

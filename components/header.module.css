@@ -6,39 +6,10 @@
   align-items: center;
   width: 100%;
   height: 4rem;
-  background-color: #000000;
-  color: #ffffff;
+  background-color: var(--color-background-shade-1);
+  color: var(--color-text);
   user-select: none;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
-}
-
-.dropdown {
-  position: absolute;
-  left: 0;
-  top: 4rem;
-  width: 20rem;
-  height: auto;
-  background-color: black;
-  border: var(--border);
-  border-radius: var(--border-radius);
-  padding: 1rem;
-  overflow: hidden;
-}
-
-.menuitem {
-  height: 50px;
-  display: flex;
-  align-items: center;
-  border-radius: var(--border-radius);
-  transition: background var(--speed);
-  padding: 2.5rem 0.5rem;
-  font-size: 1.5rem;
-  justify-content: space-between;
-  border-bottom: 0.1rem solid white;
-}
-
-.menuitem:hover {
-  background: linear-gradient(black, rgb(53, 53, 53));
+  box-shadow: 0 3px 6px var(--color-shadow);
 }
 
 .togglePC {
@@ -64,8 +35,8 @@
 }
 
 .profile {
-  border-left: 0.1rem solid white;
-  border-right: 0.1rem solid white;
+  border-left: 0.1rem solid var(--color-text);
+  border-right: 0.1rem solid var(--color-text);
   justify-content: space-between;
   display: flex;
   font-size: 1.5rem;
@@ -85,11 +56,10 @@
 }
 
 .profile:hover {
-  background: linear-gradient(black, #353535);
+  background: linear-gradient(var(--color-background-shade-1), var(--color-background-shade-3));
 }
 
 .profileimage {
-  /* background-image: var(--background-image) no-repeat center; */
   margin-right: 0.5rem;
   flex: 0 0 4rem;
   width: 4rem;
@@ -104,142 +74,18 @@
   padding: 0.5rem 0;
   justify-content: center;
   font-size: 2rem;
-  background-color: black;
+  background-color: var(--color-background-shade-1);
+  color: var(--color-text);
   text-align: center;
   width: 4rem;
   height: 4rem;
 }
 
 .button:hover {
-  background: linear-gradient(black, rgb(53, 53, 53));
-}
-
-.settingmodal {
-  position: absolute;
-  display: flex;
-  align-content: center;
-  left: 50%;
-  top: -4vh;
-  transform: translate(-50%, 20%);
-  width: clamp(25rem, 50vw, 50rem);
-  height: 75vh;
-  border: 0.15rem solid white;
-  background: rgb(0, 0, 0);
-}
-
-.settingmodalnav {
-  position: absolute;
-  top: 5%;
-  left: 0;
-  width: 30%;
-  height: 95%;
-  border-right: 0.15rem solid white;
-}
-
-.settingmodalheader {
-  display: flex;
-  align-content: center;
-  width: 100%;
-  height: 5%;
-  background: black;
-  border-bottom: 0.15rem solid white;
-}
-
-.settingmodalfill {
-  position: absolute;
-  align-content: center;
-  width: 70%;
-  height: 95%;
-  top: 5%;
-  left: 30%;
-  background: black;
+  background: linear-gradient(var(--color-background-shade-1), var(--color-background-shade-3));
 }
 
 .profilenames {
   height: 4rem;
   width: 256px;
-}
-
-.settingsMode {
-  display: flex;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.35);
-  z-index: 5;
-  justify-content: center;
-  align-items: center;
-}
-
-.settingsPane {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  max-width: 800px;
-  max-height: 600px;
-  background-color: black;
-}
-
-.menuBar {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding-right: 0.25rem;
-  width: 100%;
-  height: 2rem;
-  font-size: 1rem;
-  background-color: #0d0d0d;
-  color: #fff;
-}
-
-.menuBar svg {
-  width: 18px;
-  height: 18px;
-}
-
-.splitPane {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  flex-direction: row;
-}
-
-.selectionPane {
-  background-color: #404040;
-  border: 0.25rem solid #0d0d0d;
-  border-top: 0;
-  width: 30%;
-}
-
-.contextPane {
-  background-color: #404040;
-  border: 0.25rem solid #0d0d0d;
-  border-left: 0;
-  border-top: 0;
-  width: 100%;
-  padding: 0.25rem;
-  user-select: none;
-}
-
-.selectionList {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 0.25rem;
-}
-
-.selectionButton {
-  width: 100%;
-  height: 3rem;
-  background-color: #202020;
-  border: 0.15rem solid black;
-}
-
-.closeSettings:hover {
-  color: #b3b3b3;
-  cursor: pointer;
-}
-
-.closeSettings:active {
-  color: #8a8a8a;
 }

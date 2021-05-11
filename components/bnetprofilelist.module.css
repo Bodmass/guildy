@@ -4,7 +4,7 @@
   bottom: calc(50% - 200px);
   width: 400px;
   height: 400px;
-  background-color: #000;
+  background-color: var(--color-background-shade-1);
   border-radius: 1rem;
   padding: calc(1rem - 5px);
 }
@@ -12,7 +12,7 @@
 .selectCharacter {
   display: flex;
   justify-content: center;
-  color: #fff;
+  color: var(--color-text);
   font-size: 1.5rem;
   height: 40px;
 }
@@ -35,7 +35,7 @@
   flex-direction: column;
   text-transform: capitalize;
   font-weight: bold;
-  color: white;
+  color: #fff;
 }
 
 .characterRealm {
@@ -46,7 +46,7 @@
   text-transform: capitalize;
   justify-content: center;
   font-weight: bold;
-  color: white;
+  color: #fff;
 }
 
 .characterPortrait {
@@ -54,6 +54,6 @@
   height: 80px;
   margin-right: 10px;
   border: 2px solid #856c11;
-  background-color: black;
+  background-color: var(--color-background-shade-1);
   margin-left: -1.5rem;
 }
