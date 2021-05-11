@@ -4,6 +4,38 @@
   --breakpont-desktop: 992px;
   --desktop-only-display: none;
   background-color: black;
+
+  --color-text: #000;
+  --color-text-hover: #4f4f4f;
+  --color-text-active: #2a2a2a;
+  --color-background-shade-1: #f2f2f2;
+  --color-background-shade-2: #c9c9c9;
+  --color-background-shade-3: #f0f0f0;
+  --color-background-shade-4: #ababab;
+  --color-shadow: #ffffff4d;
+
+  --filter-invert: invert(1);
+
+  --color-scroll-track: #686868;
+  --color-scroll-thumb: #ffffff;
+  --color-scroll-thumb-hover: #e6e6e6;
+}
+
+.dark {
+  --color-text: #fff;
+  --color-text-hover: #b3b3b3;
+  --color-text-active: #8a8a8a;
+  --color-background-shade-1: #000;
+  --color-background-shade-2: #0d0d0d;
+  --color-background-shade-3: #404040;
+  --color-background-shade-4: #202020;
+  --color-shadow: #0000004d;
+
+  --filter-invert: invert(0);
+
+  --color-scroll-track: #3d3d3d;
+  --color-scroll-thumb: #b1b1b1;
+  --color-scroll-thumb-hover: #e6e6e6;
 }
 
 @media screen and (min-width: 576px) {
@@ -23,10 +55,15 @@
 }
 
 body {
-  background-color: var(--color-background);
+  background-color: var(--color-background-shade-1);
   color: var(--color-text);
   transition: background-color 0.3s ease, color 0.3s ease;
   font-family: 'Calibri', sans-serif;
+}
+
+body.dark {
+  background-color: var(--dark-color-background-shade-1);
+  color: var(--dark-color-text);
 }
 
 /* Sane Reset Below */
@@ -122,16 +159,16 @@ select {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #3d3d3d;
+  background: var(--color-scroll-track);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   border: 1px solid black;
-  background: #b1b1b1;
+  background: var(--color-scroll-thumb);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #e6e6e6;
+  background: var(--color-scroll-thumb-hover);
 }
