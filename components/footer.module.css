@@ -15,7 +15,7 @@
 .logo {
   width: 86px;
   height: 48px;
-  background: center/100% no-repeat url('/images/guildy/guildyWhite.svg');
+  background: center/100% no-repeat url('../public/images/guildy/guildyWhite.svg');
   filter: var(--filter-invert);
 }
 
