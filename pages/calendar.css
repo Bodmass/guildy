@@ -10,12 +10,22 @@
   --color-calendar-btn-disabled: #a4a4a4;
 }
 
+.minimal-light {
+  --color-calendar-text: rgb(0, 0, 0);
+  --color-calendar-btn: #000000;
+  --color-calendar-btn-disabled: #4d4d4d;
+}
+
 .react-calendar {
   background: url(../public/images/guildy/calendar/wow-theme/calendarBG.png);
 }
 
 .minimal .react-calendar {
   background: url(../public/images/guildy/calendar/minimal-theme/calendarBG.png);
+}
+
+.minimal-light .react-calendar {
+  background: url(../public/images/guildy/calendar/minimal-light-theme/calendarBG.png);
 }
 
 .react-calendar__navigation {
@@ -34,7 +44,12 @@
   user-select: none;
 }
 
-.minimal .react-calendar__navigation__label {
+.minimal-light .react-calendar__navigation__label {
+  color: var(--color-calendar-text);
+}
+
+.minimal .react-calendar__navigation__label,
+.minimal-light .react-calendar__navigation__label {
   background: none;
 }
 
@@ -63,6 +78,11 @@
   background: url(../public/images/guildy/calendar/minimal-theme/calendarButton.png) center no-repeat;
 }
 
+.minimal-light .react-calendar__navigation__arrow.react-calendar__navigation__next-button,
+.minimal-light .react-calendar__navigation__arrow.react-calendar__navigation__prev-button {
+  background: url(../public/images/guildy/calendar/minimal-light-theme/calendarButton.png) center no-repeat;
+}
+
 .react-calendar__navigation__arrow.react-calendar__navigation__prev-button:enabled:hover,
 .react-calendar__navigation__arrow.react-calendar__navigation__next-button:enabled:hover {
   background: url(../public/images/guildy/calendar/wow-theme/calendarButtonDown.png) center no-repeat;
@@ -71,6 +91,11 @@
 .minimal .react-calendar__navigation__arrow.react-calendar__navigation__prev-button:enabled:hover,
 .minimal .react-calendar__navigation__arrow.react-calendar__navigation__next-button:enabled:hover {
   background: url(../public/images/guildy/calendar/minimal-theme/calendarButtonDown.png) center no-repeat;
+}
+
+.minimal-light .react-calendar__navigation__arrow.react-calendar__navigation__prev-button:enabled:hover,
+.minimal-light .react-calendar__navigation__arrow.react-calendar__navigation__next-button:enabled:hover {
+  background: url(../public/images/guildy/calendar/minimal-light-theme/calendarButtonDown.png) center no-repeat;
 }
 
 .react-calendar__navigation__arrow.react-calendar__navigation__prev-button:enabled:active,
@@ -82,6 +107,11 @@
 .minimal .react-calendar__navigation__arrow.react-calendar__navigation__prev-button:enabled:active,
 .minimal .react-calendar__navigation__arrow.react-calendar__navigation__next-button:enabled:active {
   background: url(../public/images/guildy/calendar/minimal-theme/calendarButton.png) center no-repeat;
+}
+
+.minimal-light .react-calendar__navigation__arrow.react-calendar__navigation__prev-button:enabled:active,
+.minimal-light .react-calendar__navigation__arrow.react-calendar__navigation__next-button:enabled:active {
+  background: url(../public/images/guildy/calendar/minimal-light-theme/calendarButton.png) center no-repeat;
 }
 
 .react-calendar__navigation button {
@@ -96,6 +126,10 @@
   font-size: 0.8rem;
   text-decoration: none;
   user-select: none;
+}
+
+.minimal-light .react-calendar__month-view__weekdays__weekday abbr {
+  color: var(--color-calendar-text);
 }
 
 .react-calendar__tile {
@@ -114,6 +148,10 @@
 
 .minimal .react-calendar__tile {
   background: url(../public/images/guildy/calendar/minimal-theme/calendarTile0.png) 100%;
+}
+
+.minimal-light .react-calendar__tile {
+  background: url(../public/images/guildy/calendar/minimal-light-theme/calendarTile0.png) 100%;
 }
 
 .react-calendar__tile:hover {
