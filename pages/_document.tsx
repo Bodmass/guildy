@@ -26,6 +26,34 @@ const darkModeJs = `
   })())
 `
 
+const calendarThemeJs = `
+  ((function () {
+    function getInitialTheme () {
+      const persistedThemePreference = window.localStorage.getItem('calendar-theme');
+      const hasPersistedPreference = typeof persistedThemePreference === 'string';
+
+      if (hasPersistedPreference) {
+        return persistedThemePreference;
+      }
+      return 'wow';
+    }
+    const calendarTheme = getInitialTheme();
+    const root = document.documentElement;
+
+    if(calendarTheme === 'minimal-light')
+    {
+      root.classList.add('minimal-light');
+    }
+    else if(calendarTheme === 'minimal')
+    {
+      root.classList.add('minimal');
+    }
+    else{
+      root.classList.add('wow');
+    }
+  })())
+`
+
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx)
@@ -37,6 +65,7 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <script dangerouslySetInnerHTML={{ __html: darkModeJs }} />
+          <script dangerouslySetInnerHTML={{ __html: calendarThemeJs }} />
         </Head>
         <body>
           <Main />

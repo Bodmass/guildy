@@ -51,17 +51,16 @@ function SettingsList({ options, setOption }) {
 }
 
 function Options({ optionSelected }) {
-  const { colorMode, setColorMode } = useContext(ThemeContext)
+  const { colorMode, themeMode, setColorMode, setThemeMode } = useContext(ThemeContext)
 
   const [state, setState] = useState({
     language: 'english',
-    theme: 'dark',
+    theme: colorMode,
+    calendar: themeMode,
   })
 
   useEffect(() => {
-    if (colorMode) {
-      setState({ ...state, theme: colorMode })
-    }
+    setState({ ...state, calendar: themeMode || 'wow', theme: colorMode || 'dark' })
   }, [])
 
   const handleChange = (event) => {
@@ -73,6 +72,9 @@ function Options({ optionSelected }) {
 
     if (name === 'theme') {
       setColorMode(state.theme === 'light' ? `dark` : 'light')
+    }
+    if (name === 'calendar') {
+      setThemeMode(event.target.value)
     }
   }
   if (optionSelected === 0) {
@@ -121,7 +123,7 @@ function Options({ optionSelected }) {
               label="Theme"
               inputProps={{
                 name: 'theme',
-                id: 'outlined-age-native-simple',
+                id: 'outlined-theme-native-simple',
               }}
               style={{
                 width: '10rem',
@@ -134,6 +136,33 @@ function Options({ optionSelected }) {
             >
               <option value="dark">Dark</option>
               <option value="light">Light</option>
+            </Select>
+          </FormControl>
+        </div>
+        <div className={styles.contextPaneOption}>
+          <span>Calendar Style</span>
+          <FormControl>
+            <Select
+              native
+              value={state.calendar}
+              onChange={handleChange}
+              label="Calendar"
+              inputProps={{
+                name: 'calendar',
+                id: 'outlined-calendar-native-simple',
+              }}
+              style={{
+                width: '10rem',
+                fontSize: '0.8rem',
+                color: '#000',
+                backgroundColor: '#fff',
+                padding: '0.25rem',
+                fontWeight: 'bold',
+              }}
+            >
+              <option value="wow">World of Warcraft</option>
+              <option value="minimal">Minimal</option>
+              <option value="minimal-light">Minimal (Light)</option>
             </Select>
           </FormControl>
         </div>
