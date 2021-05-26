@@ -96,16 +96,16 @@ function TileContent({ date, _view }) {
     const DAY = new Date(e.startDate)
     if (isSameDay(DAY, date)) {
       if (e.endDate != null) {
-        e.isStart = true
-        e.displayName = `${e.name  } begins`
+        const newPairs = { isStart: 'true', displayName: `${e.name} begins` }
+        Object.assign(e, newPairs)
         urlBackground = e.backgroundStart
       }
       tileEvents.push(e)
     } else if (e.endDate != null) {
       const DAYEND = new Date(e.endDate)
       if (isSameDay(DAYEND, date)) {
-        e.displayName = `${e.name  } ends`
-        e.isStart = false
+        const newPairs = { isStart: 'false', displayName: `${e.name} ends` }
+        Object.assign(e, newPairs)
         urlBackground = e.backgroundEnd
         tileEvents.push(e)
       }
