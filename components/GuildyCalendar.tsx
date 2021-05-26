@@ -159,7 +159,6 @@ const GuildyCalendar = () => {
         value={value}
         view="month"
         formatShortWeekday={(locale, date) => WEEKDAY[new Date(date).getDay()]}
-        // formatShortWeekday={(locale, date) => date.toString('dddd, , ')}
         showFixedNumberOfWeeks
         tileDisabled={TileDisabled}
         tileContent={TileContent}
