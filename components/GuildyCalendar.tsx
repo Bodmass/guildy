@@ -95,18 +95,22 @@ function TileContent({ date, _view }) {
   HOLIDAYS.map((e) => {
     const DAY = new Date(e.startDate)
     if (isSameDay(DAY, date)) {
+      if (e.backgroundStart) {
+        urlBackground = e.backgroundStart
+      }
       if (e.endDate != null) {
         const newPairs = { isStart: 'true', displayName: `${e.name} begins` }
         Object.assign(e, newPairs)
-        urlBackground = e.backgroundStart
       }
       tileEvents.push(e)
     } else if (e.endDate != null) {
       const DAYEND = new Date(e.endDate)
       if (isSameDay(DAYEND, date)) {
+        if (e.backgroundEnd) {
+          urlBackground = e.backgroundEnd
+        }
         const newPairs = { isStart: 'false', displayName: `${e.name} ends` }
         Object.assign(e, newPairs)
-        urlBackground = e.backgroundEnd
         tileEvents.push(e)
       }
     }
