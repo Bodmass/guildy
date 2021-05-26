@@ -46,10 +46,8 @@
   text-align: left;
   position: relative;
   width: 100%;
-  height: 15px;
   overflow: hidden;
-  white-space: nowrap;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   text-overflow: ellipsis;
   border: 1px solid #00000000;
 }
@@ -85,4 +83,6 @@
   flex-direction: column-reverse;
   justify-content: flex-end;
   width: 80px;
+  height: 90px;
+  padding-top: 20px;
 }

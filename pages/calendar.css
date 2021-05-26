@@ -166,6 +166,7 @@
   padding-left: 2px;
   padding-top: 2px;
   user-select: none;
+  position: absolute;
 }
 
 .react-calendar__tile:disabled {
