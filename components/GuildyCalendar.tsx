@@ -17,9 +17,10 @@ const EVENTS = [
   },
 ]
 
-const getDaysArray = function (s, e) {
-  let a; let d
-  for (a = [], d = new Date(s); d <= e; d.setDate(d.getDate() + 1)) {
+function getDaysArray(s, e) {
+  let a = []
+  const d = new Date(s)
+  for (a = [], d; d <= e; d.setDate(d.getDate() + 1)) {
     a.push(new Date(d))
   }
   return a
