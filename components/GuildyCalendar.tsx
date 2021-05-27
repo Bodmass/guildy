@@ -15,55 +15,15 @@ const EVENTS = [
     instance: 'sl-castle-nathria',
     startDate: '11 Feb 2021 15:30:00 GMT',
   },
-  {
-    name: 'Mythic!',
-    type: 'Raid',
-    instance: 'sl-castle-nathria',
-    startDate: '09 Feb 2021 15:30:00 GMT',
-  },
-  {
-    name: 'M+ w/ QQQueens',
-    type: 'Dungeon',
-    instance: 'sl-spires-of-acension',
-    startDate: '11 Feb 2021 19:30:00 GMT',
-  },
-  {
-    name: 'Test',
-    type: 'Dungeon',
-    instance: 'sl-spires-of-acension',
-    startDate: '12 Feb 2021 19:30:00 GMT',
-  },
-  {
-    name: 'Test',
-    type: 'Dungeon',
-    instance: 'sl-spires-of-acension',
-    startDate: '12 Feb 2021 19:30:00 GMT',
-  },
-  {
-    name: 'Test',
-    type: 'Dungeon',
-    instance: 'sl-spires-of-acension',
-    startDate: '12 Feb 2021 19:30:00 GMT',
-  },
-  {
-    name: 'BDAY!!',
-    type: 'Misc',
-    instance: 'misc',
-    startDate: '5 Feb 2021 00:00:00 GMT',
-  },
-  {
-    name: 'Ben day!!',
-    type: 'Misc',
-    instance: 'misc',
-    startDate: '19 May 2021 00:00:00 GMT',
-  },
-  {
-    name: 'Test',
-    type: 'Misc',
-    instance: 'misc',
-    startDate: '1 Mar 2021 00:00:00 GMT',
-  },
 ]
+
+const getDaysArray = function (s, e) {
+  let a; let d
+  for (a = [], d = new Date(s); d <= e; d.setDate(d.getDate() + 1)) {
+    a.push(new Date(d))
+  }
+  return a
+}
 
 function isSameDay(a, b) {
   return differenceInCalendarDays(a, b) === 0
@@ -84,6 +44,7 @@ function TileClassName({ date, _view }) {
 
 function TileContent({ date, _view }) {
   const tileEvents = []
+
   let urlBackground = ''
   EVENTS.map((e) => {
     const DAY = new Date(Date.parse(e.startDate))
@@ -92,8 +53,18 @@ function TileContent({ date, _view }) {
     }
     return null
   })
+
   HOLIDAYS.map((e) => {
     const DAY = new Date(e.startDate)
+    const dayList = getDaysArray(new Date(e.startDate), new Date(e.endDate))
+
+    dayList.map((day) => {
+      if (isSameDay(day, date)) {
+        if (e.backgroundOngoing) urlBackground = e.backgroundOngoing
+      }
+      return null
+    })
+
     if (isSameDay(DAY, date)) {
       if (e.backgroundStart) {
         urlBackground = e.backgroundStart
@@ -118,7 +89,7 @@ function TileContent({ date, _view }) {
     return null
   })
 
-  if (tileEvents.length === 0) {
+  if (tileEvents.length === 0 && urlBackground === '') {
     return null
   }
 
@@ -137,7 +108,10 @@ function TileContent({ date, _view }) {
   }
 
   return (
-    <div className={styles.tiles} style={{ background: `url(/images/guildy/calendar/events/${urlBackground}.png` }}>
+    <div
+      className={styles.tiles}
+      style={{ background: `url(/images/guildy/calendar/events/${urlBackground}.png) top left 11% ` }}
+    >
       {tileEvents.map((event) => (
         <div className={styles.tileEvent} onClick={() => {}} onKeyUp={() => {}} role="button" tabIndex={0}>
           {event.displayName ? <a>{event.displayName}</a> : <a>{event.name}</a>}
