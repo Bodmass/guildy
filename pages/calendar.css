@@ -1,17 +1,20 @@
 :root {
   --color-calendar-text: #fff;
+  --color-calendar-tile-bg: #00000085;
   --color-calendar-btn: #ffb100;
-  --color-calendar-btn-disabled: black;
+  --color-calendar-btn-disabled: #a4a4a4;
 }
 
 .minimal {
-  --color-calendar-text: #fff;
+  --color-calendar-text: #ffffff;
+  --color-calendar-tile-bg: #00000087;
   --color-calendar-btn: #ffffff;
   --color-calendar-btn-disabled: #a4a4a4;
 }
 
 .minimal-light {
-  --color-calendar-text: rgb(0, 0, 0);
+  --color-calendar-text: #000000;
+  --color-calendar-tile-bg: #ffffffae;
   --color-calendar-btn: #000000;
   --color-calendar-btn-disabled: #4d4d4d;
 }
@@ -143,7 +146,7 @@
   background-color: rgba(0, 0, 0, 0);
   flex-direction: column;
   justify-content: space-between;
-  padding-bottom: 5px;
+  padding: 1px;
 }
 
 .minimal .react-calendar__tile {
@@ -167,6 +170,7 @@
   padding-top: 2px;
   user-select: none;
   position: absolute;
+  font-size: 0.75rem;
 }
 
 .react-calendar__tile:disabled {
