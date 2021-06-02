@@ -1,18 +1,21 @@
 .calendarContainer {
-  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   text-align: center;
-  left: calc(50% - 330px);
-  bottom: calc(50% - 311px);
   padding: 16px 15px;
   color: white;
   font-size: 1rem;
   font-weight: bold;
-  width: 660px;
-  height: 623px;
+  max-width: 660px;
+  max-height: 623px;
+}
+
+@media only screen and (max-width: 600px) {
+  .calendarContainer {
+    display: none;
+  }
 }
 
 .calendarContainer_react-calendar__navigation button {
