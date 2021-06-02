@@ -1,0 +1,64 @@
+.upcomingEventsContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  left: calc(95% - 270px);
+  bottom: calc(50% - 311px);
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  min-width: 100px;
+  width: 330px;
+  height: 600px;
+  margin-left: 2rem;
+  border: black 4px solid;
+  background-color: #181818;
+}
+
+.title {
+  width: 100%;
+  height: 2rem;
+  border-bottom: black 4px solid;
+}
+
+.eventList {
+  width: 100%;
+  height: 560px;
+  overflow-y: scroll;
+}
+
+.ongoingList {
+  width: 100%;
+  min-height: 5rem;
+}
+
+.eventItem {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 4rem;
+  border: rgb(0, 0, 0) 1px solid;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+  justify-content: space-between;
+}
+
+.eventTitle {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+}
+.eventInfo {
+  display: flex;
+  justify-content: left;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  .upcomingEventsContainer {
+    margin-left: 0;
+  }
+}
