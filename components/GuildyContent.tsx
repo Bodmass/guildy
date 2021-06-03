@@ -1,5 +1,5 @@
-import GuildyCalendar from "./GuildyCalendar"
-import GuildyUpcoming from "./GuildyUpcoming"
+import GuildyCalendar from './GuildyCalendar'
+import GuildyUpcoming from './GuildyUpcoming'
 import styles from './guildycontent.module.css'
 
 const GuildyContent = () => {
