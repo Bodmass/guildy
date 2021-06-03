@@ -59,7 +59,7 @@ function UpcomingEventItem({ name, background, start, ongoing }) {
 
 function EventList({ eventData, ongoingCount }) {
   return (
-    <>
+    <div className={styles.fullEventList}>
       {ongoingCount > 0 ? (
         <>
           <div className={styles.title}>Ongoing Events</div>
@@ -68,7 +68,6 @@ function EventList({ eventData, ongoingCount }) {
               <OngoingEventItem
                 name={event.name}
                 background={event.background}
-                start={event.start}
                 end={event.end}
                 ongoing={event.ongoing}
               />
@@ -84,12 +83,11 @@ function EventList({ eventData, ongoingCount }) {
             name={event.name}
             background={event.background}
             start={event.start}
-            end={event.end}
             ongoing={event.ongoing}
           />
         ))}
       </div>
-    </>
+    </div>
   )
 }
 
@@ -101,12 +99,10 @@ const GuildyUpcoming = () => {
     const EVENTDATA = []
     const TODAY = new Date()
     const DAYRANGE = new Date()
+    let count = 0
     DAYRANGE.setDate(TODAY.getDate() + DAYSTOEVENTLIMIT)
 
     HOLIDAYS.map((e) => {
-      const STARTDATE = new Date(e.startDate)
-      const ENDDATE = new Date(e.endDate)
-
       const holidayObject = {
         name: e.name,
         background: e.backgroundStart,
@@ -115,16 +111,20 @@ const GuildyUpcoming = () => {
         end: e.endDate,
       }
 
+      const STARTDATE = new Date(holidayObject.start)
+
       if (e.endDate == null) {
         const NEWEND = new Date()
         NEWEND.setDate(STARTDATE.getDate() + 1)
         holidayObject.end = NEWEND.toDateString()
       }
 
+      const ENDDATE = new Date(holidayObject.end)
+
       if (TODAY > STARTDATE) {
-        if (TODAY < ENDDATE || e.endDate == null) {
+        if (TODAY <= ENDDATE) {
           holidayObject.ongoing = true
-          setOngoingCount(ongoingCount + 1)
+          count += 1
           EVENTDATA.push(holidayObject)
           return null
         }
@@ -139,7 +139,7 @@ const GuildyUpcoming = () => {
       return null
     })
     setEventData(EVENTDATA)
-    setOngoingCount(ongoingCount)
+    setOngoingCount(count)
   }, [])
 
   return (
