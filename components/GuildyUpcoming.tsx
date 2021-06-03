@@ -138,6 +138,10 @@ const GuildyUpcoming = () => {
       }
       return null
     })
+    EVENTDATA.sort((a, b) => {
+      return new Date(a.start).getTime() - new Date(b.start).getTime()
+    })
+
     setEventData(EVENTDATA)
     setOngoingCount(count)
   }, [])
