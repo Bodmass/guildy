@@ -114,7 +114,7 @@ function TileContent({ date, _view }) {
       style={{ background: `url(/images/guildy/calendar/events/${urlBackground}.png) top left 11% ` }}
     >
       {tileEvents.map((event) => (
-        <div className={styles.tileEvent} onClick={() => {}} onKeyUp={() => {}} role="button" tabIndex={0}>
+        <div key={event} className={styles.tileEvent} onClick={() => {}} onKeyUp={() => {}} role="button" tabIndex={0}>
           {event.displayName ? <a>{event.displayName}</a> : <a>{event.name}</a>}
         </div>
       ))}

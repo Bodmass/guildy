@@ -80,6 +80,7 @@ function EventList({ eventData, ongoingCount }) {
       <div className={styles.eventList}>
         {eventData.map((event) => (
           <UpcomingEventItem
+            key={event}
             name={event.name}
             background={event.background}
             start={event.start}
