@@ -1,0 +1,110 @@
+{
+  "holiday": [
+    {
+      "name": "New Year",
+      "type": "Holiday",
+      "backgroundStart": "calendarFireworks",
+      "backgroundEnd": "calendarFireworks",
+      "startDate": "31 Dec 2020 00:00:00 ",
+      "endDate": "1 Jan 2021 23:59:59 GMT",
+      "repeatYearly": "true"
+    },
+    {
+      "name": "Love is in the Air",
+      "type": "Holiday",
+      "backgroundStart": "calendarLoveInTheAirStart",
+      "backgroundOngoing": "calendarLoveInTheAirOngoing",
+      "backgroundEnd": "calendarLoveInTheAirEnd",
+      "startDate": "7 Feb 2021 00:00:00 ",
+      "endDate": "20 Feb 2021 23:59:59 GMT",
+      "repeatYearly": "true"
+    },
+    {
+      "name": "Children's Week",
+      "type": "Holiday",
+      "backgroundStart": "calendarChildrensWeekStart",
+      "backgroundOngoing": "calendarChildrensWeekOngoing",
+      "backgroundEnd": "calendarChildrensWeekEnd",
+      "startDate": "1 May 2021 00:00:00 ",
+      "endDate": "7 May 2021 23:59:59 GMT",
+      "repeatYearly": "true"
+    },
+    {
+      "name": "Midsummer Fire Festival",
+      "type": "Holiday",
+      "backgroundStart": "calendarMidsummerStart",
+      "backgroundOngoing": "calendarMidsummerOngoing",
+      "backgroundEnd": "calendarMidsummerEnd",
+      "startDate": "21 Jun 2021 00:00:00 ",
+      "endDate": "5 Jul 2021 23:59:59 GMT",
+      "repeatYearly": "true"
+    },
+    {
+      "name": "Pirates' Day",
+      "type": "Holiday",
+      "backgroundStart": "calendarPiratesDay",
+      "startDate": "19 Sep 2021 00:00:00 GMT",
+      "repeatYearly": "true"
+    },
+    {
+      "name": "Harvest Festival",
+      "type": "Holiday",
+      "backgroundStart": "calendarHarvestFestivalStart",
+      "backgroundOngoing": "calendarHarvestFestivalOngoing",
+      "backgroundEnd": "calendarHarvestFestivalEnd",
+      "startDate": "27 Sep 2021 00:00:00 ",
+      "endDate": "4 Oct 2021 23:59:59 GMT",
+      "repeatYearly": "true"
+    },
+    {
+      "name": "Hallow's End",
+      "type": "Holiday",
+      "backgroundStart": "calendarHallowsEndStart",
+      "backgroundOngoing": "calendarHallowsEndOngoing",
+      "backgroundEnd": "calendarHallowsEndEnd",
+      "startDate": "18 Oct 2021 10:00:00 GMT",
+      "endDate": "1 Nov 2021 11:00:01 GMT",
+      "repeatYearly": "true"
+    },
+    {
+      "name": "Day of the Dead",
+      "type": "Holiday",
+      "backgroundStart": "calendarDayoftheDeadStart",
+      "backgroundOngoing": "calendarDayoftheDeadOngoing",
+      "backgroundEnd": "calendarDayoftheDeadEnd",
+      "startDate": "1 Nov 2021 11:00:00 GMT ",
+      "endDate": "3 Nov 2021 11:00:00 GMT",
+      "repeatYearly": "true"
+    },
+    {
+      "name": "WoW Anniversary",
+      "type": "Holiday",
+      "backgroundStart": "calendarAnniversaryStart",
+      "backgroundOngoing": "calendarAnniversaryOngoing",
+      "backgroundEnd": "calendarAnniversaryEnd",
+      "startDate": "16 Nov 2021 00:00:00 ",
+      "endDate": "30 Nov 2021 23:59:59 GMT",
+      "repeatYearly": "true"
+    },
+    {
+      "name": "Pilgrim's Bounty",
+      "type": "Holiday",
+      "backgroundStart": "calendarHarvestFestivalStart",
+      "backgroundOngoing": "calendarHarvestFestivalOngoing",
+      "backgroundEnd": "calendarHarvestFestivalEnd",
+      "startDate": "22 Nov 2021 00:00:00 ",
+      "endDate": "28 Nov 2021 23:59:59 GMT",
+      "repeatYearly": "true"
+    },
+    {
+      "name": "Feast of Winter Veil",
+      "type": "Holiday",
+      "backgroundStart": "calendarWinterVeilStart",
+      "backgroundOngoing": "calendarWinterVeilOngoing",
+      "backgroundEnd": "calendarWinterVeilEnd",
+      "startDate": "15 Dec 2021 00:00:00 ",
+      "endDate": "2 Jan 2022 23:59:59 GMT",
+      "repeatYearly": "true"
+    }
+  ]
+}

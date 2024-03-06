@@ -1,19 +1,21 @@
 .calendarContainer {
-  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   text-align: center;
-  left: calc(50% - 330px);
-  bottom: calc(50% - 311px);
   padding: 16px 15px;
   color: white;
   font-size: 1rem;
   font-weight: bold;
-  width: 660px;
-  height: 623px;
-  background: url(../public/images/guildy/calendar/calendarBG.png);
+  max-width: 660px;
+  max-height: 623px;
+}
+
+@media only screen and (max-width: 600px) {
+  .calendarContainer {
+    display: none;
+  }
 }
 
 .calendarContainer_react-calendar__navigation button {
@@ -32,7 +34,7 @@
   font-weight: bold;
   width: 90px;
   height: 90px;
-  background: url(../public/images/guildy/calendar/calendarTile0.png) 100%;
+  background: url(../public/images/guildy/calendar/wow-theme/calendarTile0.png) 100%;
 }
 
 .calendar:disabled {
@@ -47,12 +49,11 @@
   text-align: left;
   position: relative;
   width: 100%;
-  height: 15px;
   overflow: hidden;
-  white-space: nowrap;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   text-overflow: ellipsis;
   border: 1px solid #00000000;
+  background: var(--color-calendar-tile-bg);
 }
 
 .tileEventBlank {
@@ -84,6 +85,7 @@
 .tiles {
   display: flex;
   flex-direction: column-reverse;
-  justify-content: flex-end;
-  width: 80px;
+  width: 100%;
+  height: 90px;
+  padding-top: 20px;
 }

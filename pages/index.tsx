@@ -4,7 +4,7 @@ import BnetLogin from '../components/BnetLogin'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import BnetProfileList from '../components/BnetProfileList'
-import GuildyCalendar from '../components/GuildyCalendar'
+import GuildyContent from '../components/GuildyContent'
 
 const bgArray = [
   'maw1.jpg',
@@ -88,7 +88,7 @@ export default function Index() {
       </style>
 
       <Header />
-      <GuildyCalendar />
+      <GuildyContent />
       <Footer />
     </>
   )

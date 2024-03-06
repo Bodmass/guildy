@@ -1,0 +1,82 @@
+.upcomingEventsContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  font-size: 1rem;
+  min-width: 100px;
+  width: 330px;
+  height: 500px;
+  margin-left: 2rem;
+  padding: 0.8rem;
+  background: url(../public/images/guildy/calendar/wow-theme/calendarUpcomingBG.png);
+}
+
+.minimal .upcomingEventsContainer {
+  background: url(../public/images/guildy/calendar/minimal-theme/calendarUpcomingBG.png);
+}
+
+.minimal-light .upcomingEventsContainer {
+  background: url(../public/images/guildy/calendar/minimal-light-theme/calendarUpcomingBG.png);
+}
+
+@media only screen and (max-width: 1000px) and (min-width: 600px) {
+  .upcomingEventsContainer {
+    display: none;
+  }
+}
+
+.title {
+  width: 100%;
+  height: 28px;
+  border-bottom: black 4px solid;
+  background: url(../public/images/guildy/calendar/wow-theme/calendarUpcomingHeader.png);
+  font-weight: bold;
+}
+
+.eventList {
+  width: 100%;
+  padding: 0 0.5rem;
+}
+
+.ongoingList {
+  width: 100%;
+  padding: 0 0.5rem;
+}
+
+.fullEventList {
+  width: 100%;
+  height: 560px;
+  overflow-y: scroll;
+}
+
+.eventItem {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 4rem;
+  border: rgb(0, 0, 0) 1px solid;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+  justify-content: space-between;
+}
+
+.eventTitle {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+}
+.eventInfo {
+  display: flex;
+  justify-content: left;
+  background-color: rgba(0, 0, 0, 0.8);
+  font-size: 0.8rem;
+  width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  .upcomingEventsContainer {
+    margin-left: 0;
+  }
+}
