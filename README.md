@@ -4,7 +4,7 @@
 
 - App
   - https://github.com/Bodmass/guildy
-  - https://guildywow.herokuapp.com
+  - https://guildy.azizarar.com
 
 # Features
 
